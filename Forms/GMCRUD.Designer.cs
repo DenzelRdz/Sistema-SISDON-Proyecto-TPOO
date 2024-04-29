@@ -29,45 +29,53 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
-			this.detalle_pedidoTableAdapter = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSetTableAdapters.detalle_pedidoTableAdapter();
-			this.tortilleriaDonTitoDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.dgv_Display = new System.Windows.Forms.DataGridView();
 			this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.clienteTableAdapter = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSetTableAdapters.clienteTableAdapter();
-			this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.nombreClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.apellidoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.telefonoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.correoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.detallepedidoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.detalle_pedidoTableAdapter = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSetTableAdapters.detalle_pedidoTableAdapter();
+			this.idPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.idProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.cantidadProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.precioUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.creadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.actualizadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.rfcClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSetBindingSource)).BeginInit();
+			this.idEmpleadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_Display)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.detallepedidoBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// dataGridView1
+			// dgv_Display
 			// 
-			this.dataGridView1.AutoGenerateColumns = false;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idClienteDataGridViewTextBoxColumn,
-            this.nombreClienteDataGridViewTextBoxColumn,
-            this.apellidoClienteDataGridViewTextBoxColumn,
-            this.telefonoClienteDataGridViewTextBoxColumn,
-            this.correoClienteDataGridViewTextBoxColumn,
+			this.dgv_Display.AutoGenerateColumns = false;
+			this.dgv_Display.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv_Display.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idPedidoDataGridViewTextBoxColumn,
+            this.idProductoDataGridViewTextBoxColumn,
+            this.cantidadProductoDataGridViewTextBoxColumn,
+            this.precioUnitarioDataGridViewTextBoxColumn,
             this.creadoEnDataGridViewTextBoxColumn,
             this.actualizadoEnDataGridViewTextBoxColumn,
-            this.rfcClienteDataGridViewTextBoxColumn});
-			this.dataGridView1.DataSource = this.clienteBindingSource;
-			this.dataGridView1.Location = new System.Drawing.Point(12, 39);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(776, 289);
-			this.dataGridView1.TabIndex = 0;
+            this.idEmpleadoDataGridViewTextBoxColumn});
+			this.dgv_Display.DataSource = this.detallepedidoBindingSource;
+			this.dgv_Display.Location = new System.Drawing.Point(12, 39);
+			this.dgv_Display.Name = "dgv_Display";
+			this.dgv_Display.Size = new System.Drawing.Size(776, 289);
+			this.dgv_Display.TabIndex = 0;
+			// 
+			// clienteBindingSource
+			// 
+			this.clienteBindingSource.DataMember = "cliente";
+			this.clienteBindingSource.DataSource = this.tortilleriaDonTitoDBDataSet;
+			// 
+			// tortilleriaDonTitoDBDataSet
+			// 
+			this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
+			this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// comboBox1
 			// 
@@ -87,58 +95,42 @@
 			this.comboBox1.Size = new System.Drawing.Size(121, 21);
 			this.comboBox1.TabIndex = 1;
 			// 
-			// tortilleriaDonTitoDBDataSet
+			// clienteTableAdapter
 			// 
-			this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
-			this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			this.clienteTableAdapter.ClearBeforeFill = true;
+			// 
+			// detallepedidoBindingSource
+			// 
+			this.detallepedidoBindingSource.DataMember = "detalle_pedido";
+			this.detallepedidoBindingSource.DataSource = this.tortilleriaDonTitoDBDataSet;
 			// 
 			// detalle_pedidoTableAdapter
 			// 
 			this.detalle_pedidoTableAdapter.ClearBeforeFill = true;
 			// 
-			// tortilleriaDonTitoDBDataSetBindingSource
+			// idPedidoDataGridViewTextBoxColumn
 			// 
-			this.tortilleriaDonTitoDBDataSetBindingSource.DataSource = this.tortilleriaDonTitoDBDataSet;
-			this.tortilleriaDonTitoDBDataSetBindingSource.Position = 0;
+			this.idPedidoDataGridViewTextBoxColumn.DataPropertyName = "idPedido";
+			this.idPedidoDataGridViewTextBoxColumn.HeaderText = "idPedido";
+			this.idPedidoDataGridViewTextBoxColumn.Name = "idPedidoDataGridViewTextBoxColumn";
 			// 
-			// clienteBindingSource
+			// idProductoDataGridViewTextBoxColumn
 			// 
-			this.clienteBindingSource.DataMember = "cliente";
-			this.clienteBindingSource.DataSource = this.tortilleriaDonTitoDBDataSet;
+			this.idProductoDataGridViewTextBoxColumn.DataPropertyName = "idProducto";
+			this.idProductoDataGridViewTextBoxColumn.HeaderText = "idProducto";
+			this.idProductoDataGridViewTextBoxColumn.Name = "idProductoDataGridViewTextBoxColumn";
 			// 
-			// clienteTableAdapter
+			// cantidadProductoDataGridViewTextBoxColumn
 			// 
-			this.clienteTableAdapter.ClearBeforeFill = true;
+			this.cantidadProductoDataGridViewTextBoxColumn.DataPropertyName = "cantidadProducto";
+			this.cantidadProductoDataGridViewTextBoxColumn.HeaderText = "cantidadProducto";
+			this.cantidadProductoDataGridViewTextBoxColumn.Name = "cantidadProductoDataGridViewTextBoxColumn";
 			// 
-			// idClienteDataGridViewTextBoxColumn
+			// precioUnitarioDataGridViewTextBoxColumn
 			// 
-			this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "idCliente";
-			this.idClienteDataGridViewTextBoxColumn.HeaderText = "idCliente";
-			this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
-			// 
-			// nombreClienteDataGridViewTextBoxColumn
-			// 
-			this.nombreClienteDataGridViewTextBoxColumn.DataPropertyName = "nombreCliente";
-			this.nombreClienteDataGridViewTextBoxColumn.HeaderText = "nombreCliente";
-			this.nombreClienteDataGridViewTextBoxColumn.Name = "nombreClienteDataGridViewTextBoxColumn";
-			// 
-			// apellidoClienteDataGridViewTextBoxColumn
-			// 
-			this.apellidoClienteDataGridViewTextBoxColumn.DataPropertyName = "apellidoCliente";
-			this.apellidoClienteDataGridViewTextBoxColumn.HeaderText = "apellidoCliente";
-			this.apellidoClienteDataGridViewTextBoxColumn.Name = "apellidoClienteDataGridViewTextBoxColumn";
-			// 
-			// telefonoClienteDataGridViewTextBoxColumn
-			// 
-			this.telefonoClienteDataGridViewTextBoxColumn.DataPropertyName = "telefonoCliente";
-			this.telefonoClienteDataGridViewTextBoxColumn.HeaderText = "telefonoCliente";
-			this.telefonoClienteDataGridViewTextBoxColumn.Name = "telefonoClienteDataGridViewTextBoxColumn";
-			// 
-			// correoClienteDataGridViewTextBoxColumn
-			// 
-			this.correoClienteDataGridViewTextBoxColumn.DataPropertyName = "correoCliente";
-			this.correoClienteDataGridViewTextBoxColumn.HeaderText = "correoCliente";
-			this.correoClienteDataGridViewTextBoxColumn.Name = "correoClienteDataGridViewTextBoxColumn";
+			this.precioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "precioUnitario";
+			this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "precioUnitario";
+			this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
 			// 
 			// creadoEnDataGridViewTextBoxColumn
 			// 
@@ -152,11 +144,11 @@
 			this.actualizadoEnDataGridViewTextBoxColumn.HeaderText = "actualizadoEn";
 			this.actualizadoEnDataGridViewTextBoxColumn.Name = "actualizadoEnDataGridViewTextBoxColumn";
 			// 
-			// rfcClienteDataGridViewTextBoxColumn
+			// idEmpleadoDataGridViewTextBoxColumn
 			// 
-			this.rfcClienteDataGridViewTextBoxColumn.DataPropertyName = "rfcCliente";
-			this.rfcClienteDataGridViewTextBoxColumn.HeaderText = "rfcCliente";
-			this.rfcClienteDataGridViewTextBoxColumn.Name = "rfcClienteDataGridViewTextBoxColumn";
+			this.idEmpleadoDataGridViewTextBoxColumn.DataPropertyName = "idEmpleado";
+			this.idEmpleadoDataGridViewTextBoxColumn.HeaderText = "idEmpleado";
+			this.idEmpleadoDataGridViewTextBoxColumn.Name = "idEmpleadoDataGridViewTextBoxColumn";
 			// 
 			// GMCRUD
 			// 
@@ -164,34 +156,33 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.comboBox1);
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.dgv_Display);
 			this.Name = "GMCRUD";
 			this.Text = "GMCRUD";
 			this.Load += new System.EventHandler(this.GMCRUD_Load);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSetBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_Display)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.detallepedidoBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dgv_Display;
 		private System.Windows.Forms.ComboBox comboBox1;
 		private TortilleriaDonTitoDBDataSet tortilleriaDonTitoDBDataSet;
-		private TortilleriaDonTitoDBDataSetTableAdapters.detalle_pedidoTableAdapter detalle_pedidoTableAdapter;
-		private System.Windows.Forms.BindingSource tortilleriaDonTitoDBDataSetBindingSource;
 		private System.Windows.Forms.BindingSource clienteBindingSource;
 		private TortilleriaDonTitoDBDataSetTableAdapters.clienteTableAdapter clienteTableAdapter;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idClienteDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nombreClienteDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn apellidoClienteDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn telefonoClienteDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn correoClienteDataGridViewTextBoxColumn;
+		private System.Windows.Forms.BindingSource detallepedidoBindingSource;
+		private TortilleriaDonTitoDBDataSetTableAdapters.detalle_pedidoTableAdapter detalle_pedidoTableAdapter;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idPedidoDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idProductoDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn cantidadProductoDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn creadoEnDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn actualizadoEnDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn rfcClienteDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idEmpleadoDataGridViewTextBoxColumn;
 	}
 }
