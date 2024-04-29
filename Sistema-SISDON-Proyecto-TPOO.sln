@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema-SISDON-Proyecto-TPOO", "Sistema-SISDON-Proyecto-TPOO.csproj", "{BEB042E3-3649-4D84-BCA3-D075401489F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Debug|x64.ActiveCfg = Debug|x64
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Debug|x64.Build.0 = Debug|x64
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Release|x64.ActiveCfg = Release|x64
+		{BEB042E3-3649-4D84-BCA3-D075401489F7}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D15CF798-A607-4CEE-9B39-97F40E109F87}
+	EndGlobalSection
+EndGlobal
