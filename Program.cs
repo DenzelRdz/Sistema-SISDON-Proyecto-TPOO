@@ -17,7 +17,7 @@ namespace Sistema_SISDON_Proyecto_TPOO
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Dev_Menu());
+			Application.Run(new Login());
 		}
 	}
 }
