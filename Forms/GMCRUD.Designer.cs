@@ -56,8 +56,8 @@
 			this.btn_Read = new System.Windows.Forms.Button();
 			this.btn_MonthDisplay = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
-			this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
 			this.btn_ExecPath = new System.Windows.Forms.Button();
+			this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_Display)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).BeginInit();
 			this.SuspendLayout();
@@ -69,7 +69,7 @@
 			this.dgv_Display.Location = new System.Drawing.Point(12, 39);
 			this.dgv_Display.Name = "dgv_Display";
 			this.dgv_Display.Size = new System.Drawing.Size(776, 136);
-			this.dgv_Display.TabIndex = 0;
+			this.dgv_Display.TabIndex = 3;
 			// 
 			// comboBox1
 			// 
@@ -87,14 +87,14 @@
 			this.comboBox1.Location = new System.Drawing.Point(12, 11);
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(121, 21);
-			this.comboBox1.TabIndex = 1;
+			this.comboBox1.TabIndex = 0;
 			// 
 			// btn_ExportXML
 			// 
 			this.btn_ExportXML.Location = new System.Drawing.Point(12, 181);
 			this.btn_ExportXML.Name = "btn_ExportXML";
 			this.btn_ExportXML.Size = new System.Drawing.Size(75, 23);
-			this.btn_ExportXML.TabIndex = 2;
+			this.btn_ExportXML.TabIndex = 4;
 			this.btn_ExportXML.Text = "Export XML";
 			this.btn_ExportXML.UseVisualStyleBackColor = true;
 			this.btn_ExportXML.Click += new System.EventHandler(this.button1_Click);
@@ -104,7 +104,7 @@
 			this.btn_ImportXML.Location = new System.Drawing.Point(93, 181);
 			this.btn_ImportXML.Name = "btn_ImportXML";
 			this.btn_ImportXML.Size = new System.Drawing.Size(75, 23);
-			this.btn_ImportXML.TabIndex = 3;
+			this.btn_ImportXML.TabIndex = 5;
 			this.btn_ImportXML.Text = "Import XML";
 			this.btn_ImportXML.UseVisualStyleBackColor = true;
 			this.btn_ImportXML.Click += new System.EventHandler(this.button2_Click);
@@ -114,7 +114,7 @@
 			this.tbox_id.Location = new System.Drawing.Point(15, 246);
 			this.tbox_id.Name = "tbox_id";
 			this.tbox_id.Size = new System.Drawing.Size(100, 20);
-			this.tbox_id.TabIndex = 4;
+			this.tbox_id.TabIndex = 7;
 			// 
 			// label1
 			// 
@@ -139,7 +139,7 @@
 			this.tbox_nombre.Location = new System.Drawing.Point(121, 246);
 			this.tbox_nombre.Name = "tbox_nombre";
 			this.tbox_nombre.Size = new System.Drawing.Size(100, 20);
-			this.tbox_nombre.TabIndex = 7;
+			this.tbox_nombre.TabIndex = 8;
 			// 
 			// label3
 			// 
@@ -171,14 +171,14 @@
 			this.tbox_telefono.Location = new System.Drawing.Point(333, 246);
 			this.tbox_telefono.Name = "tbox_telefono";
 			this.tbox_telefono.Size = new System.Drawing.Size(100, 20);
-			this.tbox_telefono.TabIndex = 11;
+			this.tbox_telefono.TabIndex = 10;
 			// 
 			// tbox_correo
 			// 
 			this.tbox_correo.Location = new System.Drawing.Point(15, 291);
 			this.tbox_correo.Name = "tbox_correo";
 			this.tbox_correo.Size = new System.Drawing.Size(100, 20);
-			this.tbox_correo.TabIndex = 4;
+			this.tbox_correo.TabIndex = 11;
 			// 
 			// label5
 			// 
@@ -221,14 +221,14 @@
 			this.tbox_rfc.Location = new System.Drawing.Point(333, 291);
 			this.tbox_rfc.Name = "tbox_rfc";
 			this.tbox_rfc.Size = new System.Drawing.Size(100, 20);
-			this.tbox_rfc.TabIndex = 11;
+			this.tbox_rfc.TabIndex = 14;
 			// 
 			// btn_Create
 			// 
 			this.btn_Create.Location = new System.Drawing.Point(15, 324);
 			this.btn_Create.Name = "btn_Create";
 			this.btn_Create.Size = new System.Drawing.Size(75, 23);
-			this.btn_Create.TabIndex = 12;
+			this.btn_Create.TabIndex = 15;
 			this.btn_Create.Text = "Create";
 			this.btn_Create.UseVisualStyleBackColor = true;
 			this.btn_Create.Click += new System.EventHandler(this.btn_Create_Click);
@@ -239,7 +239,7 @@
 			this.dtp_creadoen.Location = new System.Drawing.Point(121, 291);
 			this.dtp_creadoen.Name = "dtp_creadoen";
 			this.dtp_creadoen.Size = new System.Drawing.Size(100, 20);
-			this.dtp_creadoen.TabIndex = 13;
+			this.dtp_creadoen.TabIndex = 12;
 			// 
 			// dtp_actualizadoen
 			// 
@@ -247,14 +247,14 @@
 			this.dtp_actualizadoen.Location = new System.Drawing.Point(227, 292);
 			this.dtp_actualizadoen.Name = "dtp_actualizadoen";
 			this.dtp_actualizadoen.Size = new System.Drawing.Size(100, 20);
-			this.dtp_actualizadoen.TabIndex = 14;
+			this.dtp_actualizadoen.TabIndex = 13;
 			// 
 			// btn_Connect
 			// 
 			this.btn_Connect.Location = new System.Drawing.Point(139, 10);
 			this.btn_Connect.Name = "btn_Connect";
 			this.btn_Connect.Size = new System.Drawing.Size(75, 23);
-			this.btn_Connect.TabIndex = 15;
+			this.btn_Connect.TabIndex = 1;
 			this.btn_Connect.Text = "Connect";
 			this.btn_Connect.UseVisualStyleBackColor = true;
 			// 
@@ -263,7 +263,7 @@
 			this.btn_ReadTable.Location = new System.Drawing.Point(174, 181);
 			this.btn_ReadTable.Name = "btn_ReadTable";
 			this.btn_ReadTable.Size = new System.Drawing.Size(75, 23);
-			this.btn_ReadTable.TabIndex = 16;
+			this.btn_ReadTable.TabIndex = 6;
 			this.btn_ReadTable.Text = "Read Table";
 			this.btn_ReadTable.UseVisualStyleBackColor = true;
 			this.btn_ReadTable.Click += new System.EventHandler(this.btn_ReadTable_Click);
@@ -293,7 +293,7 @@
 			this.btn_Read.Location = new System.Drawing.Point(96, 324);
 			this.btn_Read.Name = "btn_Read";
 			this.btn_Read.Size = new System.Drawing.Size(75, 23);
-			this.btn_Read.TabIndex = 19;
+			this.btn_Read.TabIndex = 16;
 			this.btn_Read.Text = "Read";
 			this.btn_Read.UseVisualStyleBackColor = true;
 			this.btn_Read.Click += new System.EventHandler(this.btn_Read_Click);
@@ -303,7 +303,7 @@
 			this.btn_MonthDisplay.Location = new System.Drawing.Point(489, 244);
 			this.btn_MonthDisplay.Name = "btn_MonthDisplay";
 			this.btn_MonthDisplay.Size = new System.Drawing.Size(91, 23);
-			this.btn_MonthDisplay.TabIndex = 20;
+			this.btn_MonthDisplay.TabIndex = 19;
 			this.btn_MonthDisplay.Text = "Month Display";
 			this.btn_MonthDisplay.UseVisualStyleBackColor = true;
 			this.btn_MonthDisplay.Click += new System.EventHandler(this.btn_MonthDisplay_Click);
@@ -317,20 +317,20 @@
 			this.label9.TabIndex = 21;
 			this.label9.Text = "Debug";
 			// 
-			// tortilleriaDonTitoDBDataSet
-			// 
-			this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
-			this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
 			// btn_ExecPath
 			// 
 			this.btn_ExecPath.Location = new System.Drawing.Point(489, 273);
 			this.btn_ExecPath.Name = "btn_ExecPath";
 			this.btn_ExecPath.Size = new System.Drawing.Size(91, 23);
-			this.btn_ExecPath.TabIndex = 22;
+			this.btn_ExecPath.TabIndex = 20;
 			this.btn_ExecPath.Text = "Show RunPath";
 			this.btn_ExecPath.UseVisualStyleBackColor = true;
 			this.btn_ExecPath.Click += new System.EventHandler(this.btn_ExecPath_Click);
+			// 
+			// tortilleriaDonTitoDBDataSet
+			// 
+			this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
+			this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// GMCRUD
 			// 
