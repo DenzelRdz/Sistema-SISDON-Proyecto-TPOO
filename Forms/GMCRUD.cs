@@ -17,13 +17,13 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 	public partial class GMCRUD : Form
 	{
 		private OleDbConnection conn = new OleDbConnection();
+		string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+
 		public GMCRUD()
 		{
 			InitializeComponent();
 			try
 			{
-				string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-				MessageBox.Show("Attempted Connection String:\n"+ path + "\\TortilleriaDonTitoDB.accdb");
 				conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+path+"\\TortilleriaDonTitoDB.accdb";
 			}
 			catch (Exception ex)
@@ -36,7 +36,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 		{
 			MessageBox.Show("BtnClick");
 			DataTable dt = new DataTable();
-			tortilleriaDonTitoDBDataSet.cliente.WriteXml("C:\\Users\\erikl\\Desktop\\detalle_pedido.xml");
+			tortilleriaDonTitoDBDataSet.cliente.WriteXml(path + "\\detalle_pedido.xml");
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			try
 			{
 				//tortilleriaDonTitoDBDataSet.Clear();
-				tortilleriaDonTitoDBDataSet.cliente.ReadXml("C:\\Users\\erikl\\Desktop\\detalle_pedido.xml");
+				tortilleriaDonTitoDBDataSet.cliente.ReadXml(path + "		\\detalle_pedido.xml");
 			}
 			catch(Exception ex)
 			{
