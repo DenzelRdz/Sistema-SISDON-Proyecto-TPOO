@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.dgv_Display = new System.Windows.Forms.DataGridView();
-			this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.btn_ExportXML = new System.Windows.Forms.Button();
 			this.btn_ImportXML = new System.Windows.Forms.Button();
@@ -57,6 +56,8 @@
 			this.btn_Read = new System.Windows.Forms.Button();
 			this.btn_MonthDisplay = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
+			this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
+			this.btn_ExecPath = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_Display)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).BeginInit();
 			this.SuspendLayout();
@@ -69,11 +70,6 @@
 			this.dgv_Display.Name = "dgv_Display";
 			this.dgv_Display.Size = new System.Drawing.Size(776, 136);
 			this.dgv_Display.TabIndex = 0;
-			// 
-			// tortilleriaDonTitoDBDataSet
-			// 
-			this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
-			this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// comboBox1
 			// 
@@ -321,11 +317,27 @@
 			this.label9.TabIndex = 21;
 			this.label9.Text = "Debug";
 			// 
+			// tortilleriaDonTitoDBDataSet
+			// 
+			this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
+			this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// btn_ExecPath
+			// 
+			this.btn_ExecPath.Location = new System.Drawing.Point(489, 273);
+			this.btn_ExecPath.Name = "btn_ExecPath";
+			this.btn_ExecPath.Size = new System.Drawing.Size(91, 23);
+			this.btn_ExecPath.TabIndex = 22;
+			this.btn_ExecPath.Text = "Show RunPath";
+			this.btn_ExecPath.UseVisualStyleBackColor = true;
+			this.btn_ExecPath.Click += new System.EventHandler(this.btn_ExecPath_Click);
+			// 
 			// GMCRUD
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 359);
+			this.Controls.Add(this.btn_ExecPath);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.btn_MonthDisplay);
 			this.Controls.Add(this.btn_Read);
@@ -394,5 +406,6 @@
 		private System.Windows.Forms.Button btn_Read;
 		private System.Windows.Forms.Button btn_MonthDisplay;
 		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Button btn_ExecPath;
 	}
 }

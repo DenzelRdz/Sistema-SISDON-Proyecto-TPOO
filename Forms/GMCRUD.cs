@@ -22,7 +22,9 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			InitializeComponent();
 			try
 			{
-				conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\erikl\source\repos\ProyectoPOO\TortilleriaDonTitoDB.accdb";
+				string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+				MessageBox.Show("Attempted Connection String:\n"+ path + "\\TortilleriaDonTitoDB.accdb");
+				conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+path+"\\TortilleriaDonTitoDB.accdb";
 			}
 			catch (Exception ex)
 			{
@@ -218,6 +220,12 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 				conn.Close();
 			}
 
+		}
+
+		private void btn_ExecPath_Click(object sender, EventArgs e)
+		{
+			string debug_path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+			MessageBox.Show(debug_path);
 		}
 	}
 }
