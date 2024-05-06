@@ -55,6 +55,8 @@
 			this.btn_Update = new System.Windows.Forms.Button();
 			this.btn_Delete = new System.Windows.Forms.Button();
 			this.btn_Read = new System.Windows.Forms.Button();
+			this.btn_MonthDisplay = new System.Windows.Forms.Button();
+			this.label9 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_Display)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).BeginInit();
 			this.SuspendLayout();
@@ -300,11 +302,32 @@
 			this.btn_Read.UseVisualStyleBackColor = true;
 			this.btn_Read.Click += new System.EventHandler(this.btn_Read_Click);
 			// 
+			// btn_MonthDisplay
+			// 
+			this.btn_MonthDisplay.Location = new System.Drawing.Point(489, 244);
+			this.btn_MonthDisplay.Name = "btn_MonthDisplay";
+			this.btn_MonthDisplay.Size = new System.Drawing.Size(91, 23);
+			this.btn_MonthDisplay.TabIndex = 20;
+			this.btn_MonthDisplay.Text = "Month Display";
+			this.btn_MonthDisplay.UseVisualStyleBackColor = true;
+			this.btn_MonthDisplay.Click += new System.EventHandler(this.btn_MonthDisplay_Click);
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(486, 228);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(39, 13);
+			this.label9.TabIndex = 21;
+			this.label9.Text = "Debug";
+			// 
 			// GMCRUD
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 359);
+			this.Controls.Add(this.label9);
+			this.Controls.Add(this.btn_MonthDisplay);
 			this.Controls.Add(this.btn_Read);
 			this.Controls.Add(this.btn_Delete);
 			this.Controls.Add(this.btn_Update);
@@ -369,5 +392,7 @@
 		private System.Windows.Forms.Button btn_Update;
 		private System.Windows.Forms.Button btn_Delete;
 		private System.Windows.Forms.Button btn_Read;
+		private System.Windows.Forms.Button btn_MonthDisplay;
+		private System.Windows.Forms.Label label9;
 	}
 }
