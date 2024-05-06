@@ -32,27 +32,6 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
-		{
-			MessageBox.Show("BtnClick");
-			DataTable dt = new DataTable();
-			tortilleriaDonTitoDBDataSet.cliente.WriteXml(path + "\\detalle_pedido.xml");
-		}
-
-		private void button2_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				//tortilleriaDonTitoDBDataSet.Clear();
-				tortilleriaDonTitoDBDataSet.cliente.ReadXml(path + "		\\detalle_pedido.xml");
-			}
-			catch(Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-			}
-			
-		}
-
 		private void btn_Create_Click(object sender, EventArgs e)
 		{
 			try
@@ -155,22 +134,12 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 					tbox_apellido.Text = acReader["apellidoCliente"].ToString();
 					tbox_telefono.Text = acReader["telefonoCliente"].ToString();
 					tbox_correo.Text = acReader["correoCliente"].ToString();
-
-					// Leer las fechas como cadenas
 					string creadoEnStr = acReader["creadoEn"].ToString();
 					string actualizadoEnStr = acReader["actualizadoEn"].ToString();
-
-					// Convertir las cadenas a DateTime y asignarlas a los DateTimePicker
 					if (DateTime.TryParse(creadoEnStr, out DateTime creadoEnDate))
-					{
-						dtp_creadoen.Value = creadoEnDate;
-					}
-
+					{ dtp_creadoen.Value = creadoEnDate; }
 					if (DateTime.TryParse(actualizadoEnStr, out DateTime actualizadoEnDate))
-					{
-						dtp_actualizadoen.Value = actualizadoEnDate;
-					}
-
+					{ dtp_actualizadoen.Value = actualizadoEnDate; }
 					tbox_rfc.Text = acReader["rfcCliente"].ToString();
 				}
 
@@ -183,12 +152,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			}
 		}
 
-		private string AccessMonthStringParse(string Month)
-		{
-			//Month
-			return "DATEADD(month, 1, creadoEn)";
-		}
-
+		//Debug
 		private void btn_MonthDisplay_Click(object sender, EventArgs e)
 		{
 			try
