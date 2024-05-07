@@ -16,5 +16,27 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void Clientes_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'tortilleriaDonTitoDBDataSet.cliente' Puede moverla o quitarla según sea necesario.
+            this.clienteTableAdapter.Fill(this.tortilleriaDonTitoDBDataSet.cliente);
+
+        }
+
+        private void btn_Nuevo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Modificar_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
