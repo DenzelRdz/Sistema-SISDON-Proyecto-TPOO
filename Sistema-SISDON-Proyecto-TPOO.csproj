@@ -195,10 +195,10 @@
     <Compile Include="Forms\Inventario.Designer.cs">
       <DependentUpon>Inventario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RealizarVenta.cs">
+    <Compile Include="Forms\Realizar Venta\RealizarVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RealizarVenta.Designer.cs">
+    <Compile Include="Forms\Realizar Venta\RealizarVenta.Designer.cs">
       <DependentUpon>RealizarVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RegistroDeVentas.cs">
@@ -225,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GMCRUD.resx">
       <DependentUpon>GMCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Realizar Venta\RealizarVenta.resx">
+      <DependentUpon>RealizarVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -16,5 +16,10 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 		{
 			InitializeComponent();
 		}
+
+		private void RealizarVenta_Load(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
