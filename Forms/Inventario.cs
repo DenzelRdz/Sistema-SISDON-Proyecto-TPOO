@@ -16,5 +16,17 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void Inventario_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'tortilleriaDonTitoDBDataSet.inventario' table. You can move, or remove it, as needed.
+            this.inventarioTableAdapter.Fill(this.tortilleriaDonTitoDBDataSet.inventario);
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
 }
