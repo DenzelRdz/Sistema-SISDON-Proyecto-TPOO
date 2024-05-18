@@ -46,6 +46,10 @@
             this.lblmail = new System.Windows.Forms.Label();
             this.lblpassword = new System.Windows.Forms.Label();
             this.btnclean = new System.Windows.Forms.Button();
+            this.chkbxViewPassword = new System.Windows.Forms.CheckBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.lblSearch = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGVemployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +85,7 @@
             // 
             // txtid
             // 
+            this.txtid.Enabled = false;
             this.txtid.Location = new System.Drawing.Point(474, 78);
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(249, 20);
@@ -106,6 +111,7 @@
             // txtphonenumber
             // 
             this.txtphonenumber.Location = new System.Drawing.Point(474, 186);
+            this.txtphonenumber.MaxLength = 10;
             this.txtphonenumber.Name = "txtphonenumber";
             this.txtphonenumber.Size = new System.Drawing.Size(249, 20);
             this.txtphonenumber.TabIndex = 6;
@@ -217,11 +223,54 @@
             this.btnclean.UseVisualStyleBackColor = true;
             this.btnclean.Click += new System.EventHandler(this.btnclean_Click);
             // 
+            // chkbxViewPassword
+            // 
+            this.chkbxViewPassword.AutoSize = true;
+            this.chkbxViewPassword.Location = new System.Drawing.Point(729, 260);
+            this.chkbxViewPassword.Name = "chkbxViewPassword";
+            this.chkbxViewPassword.Size = new System.Drawing.Size(98, 17);
+            this.chkbxViewPassword.TabIndex = 17;
+            this.chkbxViewPassword.Text = "Ver contraseña";
+            this.chkbxViewPassword.UseVisualStyleBackColor = true;
+            this.chkbxViewPassword.CheckedChanged += new System.EventHandler(this.chkbxViewPassword_CheckedChanged);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(474, 33);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(543, 20);
+            this.txtSearch.TabIndex = 18;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(1023, 31);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(53, 23);
+            this.btnSearch.TabIndex = 19;
+            this.btnSearch.Text = "Buscar";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSearch.Location = new System.Drawing.Point(408, 36);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(43, 13);
+            this.lblSearch.TabIndex = 20;
+            this.lblSearch.Text = "Buscar:";
+            // 
             // USUARIOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 606);
+            this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.chkbxViewPassword);
             this.Controls.Add(this.btnclean);
             this.Controls.Add(this.lblpassword);
             this.Controls.Add(this.lblmail);
@@ -268,5 +317,9 @@
         private System.Windows.Forms.Label lblmail;
         private System.Windows.Forms.Label lblpassword;
         private System.Windows.Forms.Button btnclean;
+        private System.Windows.Forms.CheckBox chkbxViewPassword;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblSearch;
     }
 }

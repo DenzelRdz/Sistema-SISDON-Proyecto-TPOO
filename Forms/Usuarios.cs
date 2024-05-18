@@ -71,6 +71,51 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             }
         }
 
+        private bool ValidateInputs()
+        {
+            // Validar que todos los campos estén llenados
+            if (string.IsNullOrWhiteSpace(txtusername.Text) ||
+                string.IsNullOrWhiteSpace(txtlastname.Text) ||
+                string.IsNullOrWhiteSpace(txtphonenumber.Text) ||
+                string.IsNullOrWhiteSpace(txtmail.Text) ||
+                string.IsNullOrWhiteSpace(txtpassword.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;
+            }
+
+            // Validar nombre y apellido
+            if (!txtusername.Text.All(char.IsLetter) || !txtlastname.Text.All(char.IsLetter) ||
+                txtusername.Text.Length > 50 || txtlastname.Text.Length > 50)
+            {
+                MessageBox.Show("El nombre y el apellido deben contener solo letras y tener un máximo de 50 caracteres.");
+                return false;
+            }
+
+            // Validar número de teléfono
+            if (txtphonenumber.Text.Length != 10 || !txtphonenumber.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("El número de teléfono debe tener exactamente 10 dígitos y contener solo números.");
+                return false;
+            }
+
+            // Validar formato de correo electrónico
+            if (!txtmail.Text.Contains("@") || txtmail.Text.Length < 5)
+            {
+                MessageBox.Show("El correo electrónico debe tener al menos 5 caracteres y contener un símbolo '@'.");
+                return false;
+            }
+
+            // Validar longitud mínima de la contraseña
+            if (txtpassword.Text.Length < 4)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.");
+                return false;
+            }
+
+            return true;
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -118,7 +163,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void txtpassword_TextChanged(object sender, EventArgs e)
         {
-
+            txtpassword.PasswordChar = '•'; // Mostrar puntos negros
         }
 
         private void txtmail_TextChanged(object sender, EventArgs e)
@@ -148,6 +193,10 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            if (!ValidateInputs())
+            {
+                return;
+            }
             try
             {
                 using (OleDbConnection conn = new OleDbConnection())
@@ -176,6 +225,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+
             try
             {
                 using (OleDbConnection conn = new OleDbConnection())
@@ -200,6 +250,10 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (!ValidateInputs())
+            {
+                return;
+            }
             try
             {
                 using (OleDbConnection conn = new OleDbConnection())
@@ -235,6 +289,70 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             txtphonenumber.Clear();
             txtmail.Clear();
             txtpassword.Clear();
+        }
+
+        private void chkbxViewPassword_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (chkbxViewPassword.Checked)
+            {
+                txtpassword.PasswordChar = '\0'; // Mostrar texto plano
+            }
+            else
+            {
+                txtpassword.PasswordChar = '•'; // Mostrar puntos negros
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text.Trim();
+
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection())
+                {
+                    conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + "\\TortilleriaDonTitoDB.accdb";
+                    conn.Open();
+
+                    // Construir la consulta SQL dinámicamente según el término de búsqueda
+                    string query = "SELECT * FROM empleado WHERE " +
+                                   "idEmpleado LIKE @searchTerm OR " +
+                                   "nombre LIKE @searchTerm OR " +
+                                   "apellido LIKE @searchTerm OR " +
+                                   "telefono LIKE @searchTerm OR " +
+                                   "correo LIKE @searchTerm";
+
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+
+                        OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt.Rows.Count == 0)
+                        {
+                            MessageBox.Show("No se encontraron resultados.");
+                            txtSearch.Clear();
+                            LoadData(); // Volver a cargar todos los datos en el DataGridView
+                        }
+                        else
+                        {
+                            dGVemployees.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }
