@@ -226,6 +226,9 @@
     <EmbeddedResource Include="Forms\GMCRUD.resx">
       <DependentUpon>GMCRUD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

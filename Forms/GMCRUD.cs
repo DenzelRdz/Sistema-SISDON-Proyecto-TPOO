@@ -191,5 +191,10 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			string debug_path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 			MessageBox.Show(debug_path);
 		}
-	}
+
+        private void GMCRUD_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
