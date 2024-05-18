@@ -183,6 +183,12 @@
     <Compile Include="Forms\Dev_Menu.Designer.cs">
       <DependentUpon>Dev_Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GMCRUD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GMCRUD.resx">
       <DependentUpon>GMCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
