@@ -72,7 +72,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             this.btnMinimizar = new Button();
             this.btnMinimizar.Dock = DockStyle.Right;
             this.btnMinimizar.Size = new Size(50, 30);
-            this.btnMinimizar.Text = "_";
+            this.btnMinimizar.Text = "-";
             this.btnMinimizar.ForeColor = Color.White;
             this.btnMinimizar.Click += new EventHandler(this.btnMinimizar_Click);
 
@@ -94,7 +94,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             // lbltitulo
             this.lbltitulo.AutoSize = true;
             this.lbltitulo.ForeColor = Color.White;
-            this.lbltitulo.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.lbltitulo.Font = new Font("Segoe UI Black", 20F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
             this.lbltitulo.Location = new Point(50, 10);
             this.lbltitulo.Text = "INICIO";
 
