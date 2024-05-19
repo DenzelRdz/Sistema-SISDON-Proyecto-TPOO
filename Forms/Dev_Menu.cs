@@ -54,9 +54,12 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			form.Show();
 		}
 
-        private void cmb_MenuSelect_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Form formMenu = new MenuForm();
+			this.Hide();
+			formMenu.Closed += (s, args) => this.Close();
+			formMenu.Show();
+		}
+	}
 }
