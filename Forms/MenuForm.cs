@@ -21,12 +21,20 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         private Panel paneltodo;
         private Label lbltitulo;
         private Button btncerrarpanel;
+        private Button btnMinimizar;
+        private Button btnCerrarSistema;
+
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
 
         public MenuForm()
         {
             InitializeComponent();
             random = new Random();
             btncerrarpanel.Visible = false;
+            btnMinimizar.Visible = true;
+            btnCerrarSistema.Visible = true;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
@@ -60,23 +68,53 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             // paneltitulo
             this.paneltitulo.Dock = DockStyle.Top;
             this.paneltitulo.BackColor = Color.FromArgb(30, 38, 70);
-            this.paneltitulo.Size = new Size(this.ClientSize.Width - 220, 80);
+            this.paneltitulo.Size = new Size(220, 50); // Increase height
+            this.btnMinimizar = new Button();
+            this.btnMinimizar.Dock = DockStyle.Right;
+            this.btnMinimizar.Size = new Size(50, 30);
+            this.btnMinimizar.Text = "_";
+            this.btnMinimizar.ForeColor = Color.White;
+            this.btnMinimizar.Click += new EventHandler(this.btnMinimizar_Click);
+
+
+            // btnCerrarSistema
+            this.btnCerrarSistema = new Button();
+            this.btnCerrarSistema.Dock = DockStyle.Right;
+            this.btnCerrarSistema.Size = new Size(50, 30);
+            this.btnCerrarSistema.Text = "X";
+            this.btnCerrarSistema.ForeColor = Color.White;
+            this.btnCerrarSistema.Click += new EventHandler(this.btnCerrarSistema_Click);
+
+            // Adding controls to paneltitulo
             this.paneltitulo.Controls.Add(this.lbltitulo);
             this.paneltitulo.Controls.Add(this.btncerrarpanel);
+            this.paneltitulo.Controls.Add(this.btnMinimizar);
+            this.paneltitulo.Controls.Add(this.btnCerrarSistema);
 
             // lbltitulo
             this.lbltitulo.AutoSize = true;
             this.lbltitulo.ForeColor = Color.White;
             this.lbltitulo.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-            this.lbltitulo.Location = new Point(30, 25);
+            this.lbltitulo.Location = new Point(50, 10);
             this.lbltitulo.Text = "INICIO";
 
             // btncerrarpanel
-            this.btncerrarpanel.Dock = DockStyle.Right;
-            this.btncerrarpanel.Size = new Size(30, 30);
-            this.btncerrarpanel.Text = "X";
+            this.btncerrarpanel.Dock = DockStyle.Left;
+            this.btncerrarpanel.Size = new Size(50, 30);
+            this.btncerrarpanel.Text = "←";
             this.btncerrarpanel.ForeColor = Color.White;
             this.btncerrarpanel.Click += new EventHandler(this.btncerrarpanel_Click);
+
+     
+            this.btnMinimizar.FlatStyle = FlatStyle.Flat;
+            this.btnCerrarSistema.FlatStyle = FlatStyle.Flat;
+            this.btncerrarpanel.FlatStyle = FlatStyle.Flat;
+            this.btnMinimizar.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSistema.FlatAppearance.BorderSize = 0;
+            this.btncerrarpanel.FlatAppearance.BorderSize = 0;
+            this.btnMinimizar.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSistema.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            this.btncerrarpanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
 
             // paneltodo
             this.paneltodo.Dock = DockStyle.Fill;
@@ -92,6 +130,46 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             this.ResumeLayout(false);
         }
 
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnCerrarSistema_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Previous code...
+        
+        // Dragging events
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            if (e.Button == MouseButtons.Left)
+            {
+                dragging = true;
+                dragCursorPoint = Cursor.Position;
+                dragFormPoint = this.Location;
+            }
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
+            }
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            if (e.Button == MouseButtons.Left)
+                dragging = false;
+        }
         private Button CreateMenuButton(string text, EventHandler onClick)
         {
             var button = new Button
