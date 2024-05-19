@@ -332,6 +332,8 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             txtphonenumber.Clear();
             txtmail.Clear();
             txtpassword.Clear();
+            dtpCreatedAt.Value = DateTime.Now;
+            dtpUpdatedAt.Value = DateTime.Now;
             HideAllErrorMessages();
         }
 
