@@ -1,9 +1,13 @@
-﻿using System;
+﻿//NO EDITAR ESTE CÓDIGO NI TAMPOCO EL FORMULARIO MenuForm.Designer.cs NI MenuForm.resx NI MenuForm.cs
+//NO EDITAR ESTE CÓDIGO NI TAMPOCO EL FORMULARIO MenuForm.Designer.cs NI MenuForm.resx NI MenuForm.cs
+//NO EDITAR ESTE CÓDIGO NI TAMPOCO EL FORMULARIO MenuForm.Designer.cs NI MenuForm.resx NI MenuForm.cs
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,7 +42,17 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
+            // Agrega los eventos de ratón al paneltitulo
+            this.paneltitulo.MouseDown += new MouseEventHandler(this.paneltitulo_MouseDown);
+            this.paneltitulo.MouseMove += new MouseEventHandler(this.paneltitulo_MouseMove);
+            this.paneltitulo.MouseUp += new MouseEventHandler(this.paneltitulo_MouseUp);
         }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void InitializeComponent()
         {
@@ -105,7 +119,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             this.btncerrarpanel.ForeColor = Color.White;
             this.btncerrarpanel.Click += new EventHandler(this.btncerrarpanel_Click);
 
-     
+
             this.btnMinimizar.FlatStyle = FlatStyle.Flat;
             this.btnCerrarSistema.FlatStyle = FlatStyle.Flat;
             this.btncerrarpanel.FlatStyle = FlatStyle.Flat;
@@ -140,23 +154,22 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             Application.Exit();
         }
 
-        // Previous code...
-        
-        // Dragging events
-        protected override void OnMouseDown(MouseEventArgs e)
+        private void paneltitulo_MouseDown(object sender, MouseEventArgs e)
         {
-            base.OnMouseDown(e);
             if (e.Button == MouseButtons.Left)
             {
-                dragging = true;
-                dragCursorPoint = Cursor.Position;
-                dragFormPoint = this.Location;
+                ReleaseCapture();
+                SendMessage(this.Handle, 0x112, 0xf012, 0);
             }
         }
 
-        protected override void OnMouseMove(MouseEventArgs e)
+        // Previous code...
+
+        // Dragging events
+       
+
+        private void paneltitulo_MouseMove(object sender, MouseEventArgs e)
         {
-            base.OnMouseMove(e);
             if (dragging)
             {
                 Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
@@ -164,12 +177,11 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             }
         }
 
-        protected override void OnMouseUp(MouseEventArgs e)
+        private void paneltitulo_MouseUp(object sender, MouseEventArgs e)
         {
-            base.OnMouseUp(e);
-            if (e.Button == MouseButtons.Left)
-                dragging = false;
+            dragging = false;
         }
+
         private Button CreateMenuButton(string text, EventHandler onClick)
         {
             var button = new Button
@@ -274,37 +286,37 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         // Event handlers for menu buttons
         private void btnclientes_Click(object sender, EventArgs e)
         {
-           OpenChildForm(new Clientes(), sender);
+            OpenChildForm(new Clientes(), sender);
         }
 
         private void btnusuarios_Click(object sender, EventArgs e)
         {
-           OpenChildForm(new USUARIOS(), sender);
+            OpenChildForm(new USUARIOS(), sender);
         }
 
         private void btninventario_Click(object sender, EventArgs e)
         {
-           OpenChildForm(new Inventario(), sender);
+            OpenChildForm(new Inventario(), sender);
         }
 
         private void btnrealizarventa_Click(object sender, EventArgs e)
         {
-          OpenChildForm(new GMCRUD(), sender);
+            OpenChildForm(new GMCRUD(), sender);
         }
 
         private void btnregistroventas_Click(object sender, EventArgs e)
         {
-           // OpenChildForm(new RegistroVentasForm(), sender);
+            // OpenChildForm(new RegistroVentasForm(), sender);
         }
 
         private void btnrealizarpedido_Click(object sender, EventArgs e)
         {
-         //   OpenChildForm(new RealizarPedidoForm(), sender);
+            //   OpenChildForm(new RealizarPedidoForm(), sender);
         }
 
         private void btnregistropedidos_Click(object sender, EventArgs e)
         {
-          //  OpenChildForm(new RegistroPedidosForm(), sender);
+            //  OpenChildForm(new RegistroPedidosForm(), sender);
         }
     }
 }
