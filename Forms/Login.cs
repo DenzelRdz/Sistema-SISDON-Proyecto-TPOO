@@ -48,8 +48,8 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
                 if (dtable.Rows.Count > 0)
                 {
-                    MenuForm Menu = new MenuForm();
-                    Menu.Show();
+                    Dev_Menu dev_Menu = new Dev_Menu();
+                    dev_Menu.Show();
                     this.Hide();
                 }
                 else

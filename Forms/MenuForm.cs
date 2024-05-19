@@ -56,113 +56,95 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void InitializeComponent()
         {
-            this.panelmenu = new System.Windows.Forms.Panel();
-            this.paneltitulo = new System.Windows.Forms.Panel();
-            this.lbltitulo = new System.Windows.Forms.Label();
-            this.btncerrarpanel = new System.Windows.Forms.Button();
-            this.btnMinimizar = new System.Windows.Forms.Button();
-            this.btnCerrarSistema = new System.Windows.Forms.Button();
-            this.paneltodo = new System.Windows.Forms.Panel();
-            this.paneltitulo.SuspendLayout();
+            this.panelmenu = new Panel();
+            this.paneltitulo = new Panel();
+            this.paneltodo = new Panel();
+            this.lbltitulo = new Label();
+            this.btncerrarpanel = new Button();
+
             this.SuspendLayout();
-            // 
+
             // panelmenu
-            // 
-            this.panelmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(38)))), ((int)(((byte)(70)))));
-            this.panelmenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelmenu.Location = new System.Drawing.Point(0, 0);
-            this.panelmenu.Name = "panelmenu";
-            this.panelmenu.Size = new System.Drawing.Size(220, 768);
-            this.panelmenu.TabIndex = 2;
-            // 
+            this.panelmenu.Dock = DockStyle.Left;
+            this.panelmenu.BackColor = Color.FromArgb(30, 38, 70);
+            this.panelmenu.Size = new Size(220, this.ClientSize.Height);
+            this.panelmenu.Controls.AddRange(new Control[]
+            {
+            CreateMenuButton("Usuarios", btnusuarios_Click),
+            CreateMenuButton("Clientes", btnclientes_Click),
+            CreateMenuButton("Inventario", btninventario_Click),
+            CreateMenuButton("Registro de Ventas", btnregistroventas_Click),
+            CreateMenuButton("Registro de Pedidos", btnregistropedidos_Click),
+            CreateMenuButton("Realizar Pedido", btnrealizarpedido_Click),
+            CreateMenuButton("Realizar Venta", btnrealizarventa_Click),
+            CreateMenuButton("Cerrar sesión", btncerrarsesion_Click)
+            });
+
             // paneltitulo
-            // 
-            this.paneltitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(38)))), ((int)(((byte)(70)))));
+            this.paneltitulo.Dock = DockStyle.Top;
+            this.paneltitulo.BackColor = Color.FromArgb(30, 38, 70);
+            this.paneltitulo.Size = new Size(220, 50); // Increase height
+            this.btnMinimizar = new Button();
+            this.btnMinimizar.Dock = DockStyle.Right;
+            this.btnMinimizar.Size = new Size(50, 30);
+            this.btnMinimizar.Text = "-";
+            this.btnMinimizar.ForeColor = Color.White;
+            this.btnMinimizar.Click += new EventHandler(this.btnMinimizar_Click);
+           
+
+
+            // btnCerrarSistema
+            this.btnCerrarSistema = new Button();
+            this.btnCerrarSistema.Dock = DockStyle.Right;
+            this.btnCerrarSistema.Size = new Size(50, 30);
+            this.btnCerrarSistema.Text = "X";
+            this.btnCerrarSistema.ForeColor = Color.White;
+            this.btnCerrarSistema.Click += new EventHandler(this.btnCerrarSistema_Click);
+
+            // Adding controls to paneltitulo
             this.paneltitulo.Controls.Add(this.lbltitulo);
             this.paneltitulo.Controls.Add(this.btncerrarpanel);
             this.paneltitulo.Controls.Add(this.btnMinimizar);
             this.paneltitulo.Controls.Add(this.btnCerrarSistema);
-            this.paneltitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.paneltitulo.Location = new System.Drawing.Point(220, 0);
-            this.paneltitulo.Name = "paneltitulo";
-            this.paneltitulo.Size = new System.Drawing.Size(804, 50);
-            this.paneltitulo.TabIndex = 1;
-            // 
+
             // lbltitulo
-            // 
             this.lbltitulo.AutoSize = true;
-            this.lbltitulo.Font = new System.Drawing.Font("Segoe UI Black", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltitulo.ForeColor = System.Drawing.Color.White;
-            this.lbltitulo.Location = new System.Drawing.Point(220, 5);
-            this.lbltitulo.Name = "lbltitulo";
-            this.lbltitulo.Size = new System.Drawing.Size(104, 37);
-            this.lbltitulo.TabIndex = 0;
+            this.lbltitulo.ForeColor = Color.White;
+            this.lbltitulo.Font = new Font("Segoe UI Black", 20F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            this.lbltitulo.Location = new Point(50, 10);
             this.lbltitulo.Text = "INICIO";
-            // 
+            this.lbltitulo.Location = new Point((this.paneltitulo.Width) + 120, // Center horizontally
+      5); // Adjust vertical position as needed
             // btncerrarpanel
-            // 
-            this.btncerrarpanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btncerrarpanel.FlatAppearance.BorderSize = 0;
-            this.btncerrarpanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncerrarpanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncerrarpanel.ForeColor = System.Drawing.Color.White;
-            this.btncerrarpanel.Location = new System.Drawing.Point(0, 0);
-            this.btncerrarpanel.Name = "btncerrarpanel";
-            this.btncerrarpanel.Size = new System.Drawing.Size(50, 50);
-            this.btncerrarpanel.TabIndex = 1;
+            this.btncerrarpanel.Dock = DockStyle.Left;
+            this.btncerrarpanel.Size = new Size(50, 30);
             this.btncerrarpanel.Text = "←";
-            this.btncerrarpanel.Click += new System.EventHandler(this.btncerrarpanel_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btncerrarpanel.ForeColor = Color.White;
+            this.btncerrarpanel.Click += new EventHandler(this.btncerrarpanel_Click);
+
+
+            this.btnMinimizar.FlatStyle = FlatStyle.Flat;
+            this.btnCerrarSistema.FlatStyle = FlatStyle.Flat;
+            this.btncerrarpanel.FlatStyle = FlatStyle.Flat;
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
-            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimizar.ForeColor = System.Drawing.Color.White;
-            this.btnMinimizar.Location = new System.Drawing.Point(704, 0);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(50, 50);
-            this.btnMinimizar.TabIndex = 2;
-            this.btnMinimizar.Text = "-";
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnCerrarSistema
-            // 
-            this.btnCerrarSistema.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCerrarSistema.FlatAppearance.BorderSize = 0;
-            this.btnCerrarSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSistema.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSistema.Location = new System.Drawing.Point(754, 0);
-            this.btnCerrarSistema.Name = "btnCerrarSistema";
-            this.btnCerrarSistema.Size = new System.Drawing.Size(50, 50);
-            this.btnCerrarSistema.TabIndex = 3;
-            this.btnCerrarSistema.Text = "X";
-            this.btnCerrarSistema.Click += new System.EventHandler(this.btnCerrarSistema_Click);
-            // 
+            this.btncerrarpanel.FlatAppearance.BorderSize = 0;
+            this.btnMinimizar.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSistema.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            this.btncerrarpanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+
             // paneltodo
-            // 
-            this.paneltodo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.paneltodo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paneltodo.Location = new System.Drawing.Point(220, 50);
-            this.paneltodo.Name = "paneltodo";
-            this.paneltodo.Size = new System.Drawing.Size(804, 718);
-            this.paneltodo.TabIndex = 0;
-            // 
+            this.paneltodo.Dock = DockStyle.Fill;
+            this.paneltodo.BackColor = Color.FromArgb(39, 41, 61);
+
             // MenuForm
-            // 
-            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.ClientSize = new Size(1024, 768);
             this.Controls.Add(this.paneltodo);
             this.Controls.Add(this.paneltitulo);
             this.Controls.Add(this.panelmenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MenuForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.paneltitulo.ResumeLayout(false);
-            this.paneltitulo.PerformLayout();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
-
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
