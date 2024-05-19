@@ -51,7 +51,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 				acCommand.ExecuteNonQuery();
 				conn.Close();
 
-				MessageBox.Show("Se creó correctamente la información");
+				MessageBox.Show("Se creó correctamente la información", "Creación de registro");
 			}
 			catch (Exception ex)
 			{
@@ -62,7 +62,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-			DialogResult dr = MessageBox.Show("¿Estas seguro que quieres eliminar este registro?", "Eliminar Registro", MessageBoxButtons.YesNo);
+			DialogResult dr = MessageBox.Show("¿Estas seguro que quieres eliminar el registro?", "Eliminar Registro", MessageBoxButtons.YesNo);
 			if (dr == DialogResult.Yes)
 			{
 				try
@@ -95,7 +95,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 				acCommand.ExecuteNonQuery();
 				conn.Close();
 
-				MessageBox.Show("Se actualizó correctamente");
+				MessageBox.Show("Se actualizó correctamente", "Modificación de registro");
 			}
 			catch (Exception ex)
 			{

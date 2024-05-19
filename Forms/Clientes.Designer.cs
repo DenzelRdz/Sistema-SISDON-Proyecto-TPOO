@@ -30,7 +30,17 @@
 		{
             this.components = new System.ComponentModel.Container();
             this.dgv_Display = new System.Windows.Forms.DataGridView();
+            this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefonoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.correoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actualizadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rfcClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tortilleriaDonTitoDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
             this.btn_Nuevo = new System.Windows.Forms.Button();
             this.btn_Eliminar = new System.Windows.Forms.Button();
             this.btn_Modificar = new System.Windows.Forms.Button();
@@ -54,16 +64,6 @@
             this.tbox_id = new System.Windows.Forms.TextBox();
             this.btn_leertabla = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actualizadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rfcClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tortilleriaDonTitoDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
             this.clienteTableAdapter = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSetTableAdapters.clienteTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Display)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
@@ -88,13 +88,72 @@
             this.dgv_Display.DataSource = this.clienteBindingSource;
             this.dgv_Display.Location = new System.Drawing.Point(3, 285);
             this.dgv_Display.Name = "dgv_Display";
-            this.dgv_Display.Size = new System.Drawing.Size(845, 255);
+            this.dgv_Display.Size = new System.Drawing.Size(773, 255);
             this.dgv_Display.TabIndex = 4;
+            // 
+            // idClienteDataGridViewTextBoxColumn
+            // 
+            this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "idCliente";
+            this.idClienteDataGridViewTextBoxColumn.HeaderText = "idCliente";
+            this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
+            // 
+            // nombreClienteDataGridViewTextBoxColumn
+            // 
+            this.nombreClienteDataGridViewTextBoxColumn.DataPropertyName = "nombreCliente";
+            this.nombreClienteDataGridViewTextBoxColumn.HeaderText = "nombreCliente";
+            this.nombreClienteDataGridViewTextBoxColumn.Name = "nombreClienteDataGridViewTextBoxColumn";
+            // 
+            // apellidoClienteDataGridViewTextBoxColumn
+            // 
+            this.apellidoClienteDataGridViewTextBoxColumn.DataPropertyName = "apellidoCliente";
+            this.apellidoClienteDataGridViewTextBoxColumn.HeaderText = "apellidoCliente";
+            this.apellidoClienteDataGridViewTextBoxColumn.Name = "apellidoClienteDataGridViewTextBoxColumn";
+            // 
+            // telefonoClienteDataGridViewTextBoxColumn
+            // 
+            this.telefonoClienteDataGridViewTextBoxColumn.DataPropertyName = "telefonoCliente";
+            this.telefonoClienteDataGridViewTextBoxColumn.HeaderText = "telefonoCliente";
+            this.telefonoClienteDataGridViewTextBoxColumn.Name = "telefonoClienteDataGridViewTextBoxColumn";
+            // 
+            // correoClienteDataGridViewTextBoxColumn
+            // 
+            this.correoClienteDataGridViewTextBoxColumn.DataPropertyName = "correoCliente";
+            this.correoClienteDataGridViewTextBoxColumn.HeaderText = "correoCliente";
+            this.correoClienteDataGridViewTextBoxColumn.Name = "correoClienteDataGridViewTextBoxColumn";
+            // 
+            // creadoEnDataGridViewTextBoxColumn
+            // 
+            this.creadoEnDataGridViewTextBoxColumn.DataPropertyName = "creadoEn";
+            this.creadoEnDataGridViewTextBoxColumn.HeaderText = "creadoEn";
+            this.creadoEnDataGridViewTextBoxColumn.Name = "creadoEnDataGridViewTextBoxColumn";
+            // 
+            // actualizadoEnDataGridViewTextBoxColumn
+            // 
+            this.actualizadoEnDataGridViewTextBoxColumn.DataPropertyName = "actualizadoEn";
+            this.actualizadoEnDataGridViewTextBoxColumn.HeaderText = "actualizadoEn";
+            this.actualizadoEnDataGridViewTextBoxColumn.Name = "actualizadoEnDataGridViewTextBoxColumn";
+            // 
+            // rfcClienteDataGridViewTextBoxColumn
+            // 
+            this.rfcClienteDataGridViewTextBoxColumn.DataPropertyName = "rfcCliente";
+            this.rfcClienteDataGridViewTextBoxColumn.HeaderText = "rfcCliente";
+            this.rfcClienteDataGridViewTextBoxColumn.Name = "rfcClienteDataGridViewTextBoxColumn";
             // 
             // clienteBindingSource
             // 
             this.clienteBindingSource.DataMember = "cliente";
             this.clienteBindingSource.DataSource = this.tortilleriaDonTitoDBDataSetBindingSource;
+            // 
+            // tortilleriaDonTitoDBDataSetBindingSource
+            // 
+            this.tortilleriaDonTitoDBDataSetBindingSource.DataSource = this.tortilleriaDonTitoDBDataSet;
+            this.tortilleriaDonTitoDBDataSetBindingSource.Position = 0;
+            this.tortilleriaDonTitoDBDataSetBindingSource.CurrentChanged += new System.EventHandler(this.tortilleriaDonTitoDBDataSetBindingSource_CurrentChanged);
+            // 
+            // tortilleriaDonTitoDBDataSet
+            // 
+            this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
+            this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btn_Nuevo
             // 
@@ -295,65 +354,6 @@
             this.label9.Text = "ID a Eliminar, Modificar o Leer";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // idClienteDataGridViewTextBoxColumn
-            // 
-            this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "idCliente";
-            this.idClienteDataGridViewTextBoxColumn.HeaderText = "idCliente";
-            this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
-            // 
-            // nombreClienteDataGridViewTextBoxColumn
-            // 
-            this.nombreClienteDataGridViewTextBoxColumn.DataPropertyName = "nombreCliente";
-            this.nombreClienteDataGridViewTextBoxColumn.HeaderText = "nombreCliente";
-            this.nombreClienteDataGridViewTextBoxColumn.Name = "nombreClienteDataGridViewTextBoxColumn";
-            // 
-            // apellidoClienteDataGridViewTextBoxColumn
-            // 
-            this.apellidoClienteDataGridViewTextBoxColumn.DataPropertyName = "apellidoCliente";
-            this.apellidoClienteDataGridViewTextBoxColumn.HeaderText = "apellidoCliente";
-            this.apellidoClienteDataGridViewTextBoxColumn.Name = "apellidoClienteDataGridViewTextBoxColumn";
-            // 
-            // telefonoClienteDataGridViewTextBoxColumn
-            // 
-            this.telefonoClienteDataGridViewTextBoxColumn.DataPropertyName = "telefonoCliente";
-            this.telefonoClienteDataGridViewTextBoxColumn.HeaderText = "telefonoCliente";
-            this.telefonoClienteDataGridViewTextBoxColumn.Name = "telefonoClienteDataGridViewTextBoxColumn";
-            // 
-            // correoClienteDataGridViewTextBoxColumn
-            // 
-            this.correoClienteDataGridViewTextBoxColumn.DataPropertyName = "correoCliente";
-            this.correoClienteDataGridViewTextBoxColumn.HeaderText = "correoCliente";
-            this.correoClienteDataGridViewTextBoxColumn.Name = "correoClienteDataGridViewTextBoxColumn";
-            // 
-            // creadoEnDataGridViewTextBoxColumn
-            // 
-            this.creadoEnDataGridViewTextBoxColumn.DataPropertyName = "creadoEn";
-            this.creadoEnDataGridViewTextBoxColumn.HeaderText = "creadoEn";
-            this.creadoEnDataGridViewTextBoxColumn.Name = "creadoEnDataGridViewTextBoxColumn";
-            // 
-            // actualizadoEnDataGridViewTextBoxColumn
-            // 
-            this.actualizadoEnDataGridViewTextBoxColumn.DataPropertyName = "actualizadoEn";
-            this.actualizadoEnDataGridViewTextBoxColumn.HeaderText = "actualizadoEn";
-            this.actualizadoEnDataGridViewTextBoxColumn.Name = "actualizadoEnDataGridViewTextBoxColumn";
-            // 
-            // rfcClienteDataGridViewTextBoxColumn
-            // 
-            this.rfcClienteDataGridViewTextBoxColumn.DataPropertyName = "rfcCliente";
-            this.rfcClienteDataGridViewTextBoxColumn.HeaderText = "rfcCliente";
-            this.rfcClienteDataGridViewTextBoxColumn.Name = "rfcClienteDataGridViewTextBoxColumn";
-            // 
-            // tortilleriaDonTitoDBDataSetBindingSource
-            // 
-            this.tortilleriaDonTitoDBDataSetBindingSource.DataSource = this.tortilleriaDonTitoDBDataSet;
-            this.tortilleriaDonTitoDBDataSetBindingSource.Position = 0;
-            this.tortilleriaDonTitoDBDataSetBindingSource.CurrentChanged += new System.EventHandler(this.tortilleriaDonTitoDBDataSetBindingSource_CurrentChanged);
-            // 
-            // tortilleriaDonTitoDBDataSet
-            // 
-            this.tortilleriaDonTitoDBDataSet.DataSetName = "TortilleriaDonTitoDBDataSet";
-            this.tortilleriaDonTitoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // clienteTableAdapter
             // 
             this.clienteTableAdapter.ClearBeforeFill = true;
@@ -362,7 +362,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 552);
+            this.ClientSize = new System.Drawing.Size(788, 629);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btn_leertabla);
             this.Controls.Add(this.dtp_actualizadoen);
