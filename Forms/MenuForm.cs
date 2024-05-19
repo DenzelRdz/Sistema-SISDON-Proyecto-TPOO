@@ -70,13 +70,14 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             this.panelmenu.Size = new Size(220, this.ClientSize.Height);
             this.panelmenu.Controls.AddRange(new Control[]
             {
-            CreateMenuButton("Clientes", btnclientes_Click),
             CreateMenuButton("Usuarios", btnusuarios_Click),
+            CreateMenuButton("Clientes", btnclientes_Click),
             CreateMenuButton("Inventario", btninventario_Click),
-            CreateMenuButton("Realizar Venta", btnrealizarventa_Click),
             CreateMenuButton("Registro de Ventas", btnregistroventas_Click),
+            CreateMenuButton("Registro de Pedidos", btnregistropedidos_Click),
             CreateMenuButton("Realizar Pedido", btnrealizarpedido_Click),
-            CreateMenuButton("Registro de Pedidos", btnregistropedidos_Click)
+            CreateMenuButton("Realizar Venta", btnrealizarventa_Click),
+            CreateMenuButton("Cerrar sesión", btncerrarsesion_Click)
             });
 
             // paneltitulo
@@ -89,6 +90,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             this.btnMinimizar.Text = "-";
             this.btnMinimizar.ForeColor = Color.White;
             this.btnMinimizar.Click += new EventHandler(this.btnMinimizar_Click);
+           
 
 
             // btnCerrarSistema
@@ -318,6 +320,10 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         private void btnregistropedidos_Click(object sender, EventArgs e)
         {
             //  OpenChildForm(new RegistroPedidosForm(), sender);
+        }
+        private void btncerrarsesion_Click(object sender, EventArgs e)
+        {
+            //  OpenChildForm(new CerrarSesionForm(), sender);
         }
     }
 }
