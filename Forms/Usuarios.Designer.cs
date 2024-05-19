@@ -50,14 +50,23 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.lblErrorUsername = new System.Windows.Forms.Label();
+            this.lblErrorLastname = new System.Windows.Forms.Label();
+            this.lblErrorPhoneNumber = new System.Windows.Forms.Label();
+            this.lblErrorEmail = new System.Windows.Forms.Label();
+            this.lblErrorPassword = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpCreatedAt = new System.Windows.Forms.DateTimePicker();
+            this.dtpUpdatedAt = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dGVemployees)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(440, 139);
+            this.btnEdit.Location = new System.Drawing.Point(210, 350);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(53, 23);
+            this.btnEdit.Size = new System.Drawing.Size(178, 23);
             this.btnEdit.TabIndex = 0;
             this.btnEdit.Text = "Editar";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -65,9 +74,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(499, 139);
+            this.btnDelete.Location = new System.Drawing.Point(403, 350);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(63, 23);
+            this.btnDelete.Size = new System.Drawing.Size(178, 23);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Borrar";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -75,7 +84,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(440, 93);
+            this.btnCreate.Location = new System.Drawing.Point(12, 350);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(185, 23);
             this.btnCreate.TabIndex = 2;
@@ -141,10 +150,11 @@
             // dGVemployees
             // 
             this.dGVemployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGVemployees.Location = new System.Drawing.Point(11, 329);
+            this.dGVemployees.Location = new System.Drawing.Point(12, 379);
             this.dGVemployees.Name = "dGVemployees";
             this.dGVemployees.Size = new System.Drawing.Size(765, 288);
             this.dGVemployees.TabIndex = 9;
+            this.dGVemployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVemployees_CellClick);
             this.dGVemployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVemployees_CellContentClick);
             // 
             // lblID
@@ -215,9 +225,9 @@
             // 
             // btnclean
             // 
-            this.btnclean.Location = new System.Drawing.Point(568, 139);
+            this.btnclean.Location = new System.Drawing.Point(594, 350);
             this.btnclean.Name = "btnclean";
-            this.btnclean.Size = new System.Drawing.Size(57, 23);
+            this.btnclean.Size = new System.Drawing.Size(182, 23);
             this.btnclean.TabIndex = 16;
             this.btnclean.Text = "Limpiar";
             this.btnclean.UseVisualStyleBackColor = true;
@@ -226,7 +236,7 @@
             // chkbxViewPassword
             // 
             this.chkbxViewPassword.AutoSize = true;
-            this.chkbxViewPassword.Location = new System.Drawing.Point(329, 223);
+            this.chkbxViewPassword.Location = new System.Drawing.Point(225, 246);
             this.chkbxViewPassword.Name = "chkbxViewPassword";
             this.chkbxViewPassword.Size = new System.Drawing.Size(98, 17);
             this.chkbxViewPassword.TabIndex = 17;
@@ -236,7 +246,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(61, 7);
+            this.txtSearch.Location = new System.Drawing.Point(74, 7);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(543, 20);
             this.txtSearch.TabIndex = 18;
@@ -244,9 +254,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(619, 6);
+            this.btnSearch.Location = new System.Drawing.Point(623, 5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(53, 23);
+            this.btnSearch.Size = new System.Drawing.Size(153, 23);
             this.btnSearch.TabIndex = 19;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -256,17 +266,121 @@
             // 
             this.lblSearch.AutoSize = true;
             this.lblSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblSearch.Location = new System.Drawing.Point(12, 7);
+            this.lblSearch.Location = new System.Drawing.Point(6, 9);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(43, 13);
             this.lblSearch.TabIndex = 20;
             this.lblSearch.Text = "Buscar:";
             // 
+            // lblErrorUsername
+            // 
+            this.lblErrorUsername.AutoSize = true;
+            this.lblErrorUsername.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorUsername.Location = new System.Drawing.Point(329, 78);
+            this.lblErrorUsername.Name = "lblErrorUsername";
+            this.lblErrorUsername.Size = new System.Drawing.Size(35, 13);
+            this.lblErrorUsername.TabIndex = 22;
+            this.lblErrorUsername.Text = "label2";
+            this.lblErrorUsername.Click += new System.EventHandler(this.lblErrorUsername_Click);
+            // 
+            // lblErrorLastname
+            // 
+            this.lblErrorLastname.AutoSize = true;
+            this.lblErrorLastname.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorLastname.Location = new System.Drawing.Point(329, 113);
+            this.lblErrorLastname.Name = "lblErrorLastname";
+            this.lblErrorLastname.Size = new System.Drawing.Size(35, 13);
+            this.lblErrorLastname.TabIndex = 23;
+            this.lblErrorLastname.Text = "label3";
+            this.lblErrorLastname.Click += new System.EventHandler(this.lblErrorLastname_Click);
+            // 
+            // lblErrorPhoneNumber
+            // 
+            this.lblErrorPhoneNumber.AutoSize = true;
+            this.lblErrorPhoneNumber.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorPhoneNumber.Location = new System.Drawing.Point(329, 149);
+            this.lblErrorPhoneNumber.Name = "lblErrorPhoneNumber";
+            this.lblErrorPhoneNumber.Size = new System.Drawing.Size(35, 13);
+            this.lblErrorPhoneNumber.TabIndex = 24;
+            this.lblErrorPhoneNumber.Text = "label4";
+            this.lblErrorPhoneNumber.Click += new System.EventHandler(this.lblErrorPhoneNumber_Click);
+            // 
+            // lblErrorEmail
+            // 
+            this.lblErrorEmail.AutoSize = true;
+            this.lblErrorEmail.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorEmail.Location = new System.Drawing.Point(329, 186);
+            this.lblErrorEmail.Name = "lblErrorEmail";
+            this.lblErrorEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblErrorEmail.TabIndex = 25;
+            this.lblErrorEmail.Text = "label5";
+            this.lblErrorEmail.Click += new System.EventHandler(this.lblErrorEmail_Click);
+            // 
+            // lblErrorPassword
+            // 
+            this.lblErrorPassword.AutoSize = true;
+            this.lblErrorPassword.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorPassword.Location = new System.Drawing.Point(329, 223);
+            this.lblErrorPassword.Name = "lblErrorPassword";
+            this.lblErrorPassword.Size = new System.Drawing.Size(35, 13);
+            this.lblErrorPassword.TabIndex = 26;
+            this.lblErrorPassword.Text = "label6";
+            this.lblErrorPassword.Click += new System.EventHandler(this.lblErrorPassword_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(8, 272);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Creado:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.Location = new System.Drawing.Point(8, 309);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Actualizado:";
+            // 
+            // dtpCreatedAt
+            // 
+            this.dtpCreatedAt.Enabled = false;
+            this.dtpCreatedAt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpCreatedAt.Location = new System.Drawing.Point(74, 269);
+            this.dtpCreatedAt.Name = "dtpCreatedAt";
+            this.dtpCreatedAt.Size = new System.Drawing.Size(249, 20);
+            this.dtpCreatedAt.TabIndex = 31;
+            this.dtpCreatedAt.ValueChanged += new System.EventHandler(this.dtpCreatedAt_ValueChanged);
+            // 
+            // dtpUpdatedAt
+            // 
+            this.dtpUpdatedAt.Enabled = false;
+            this.dtpUpdatedAt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpUpdatedAt.Location = new System.Drawing.Point(74, 303);
+            this.dtpUpdatedAt.Name = "dtpUpdatedAt";
+            this.dtpUpdatedAt.Size = new System.Drawing.Size(249, 20);
+            this.dtpUpdatedAt.TabIndex = 32;
+            this.dtpUpdatedAt.ValueChanged += new System.EventHandler(this.dtpUpdatedAt_ValueChanged);
+            // 
             // USUARIOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 629);
+            this.ClientSize = new System.Drawing.Size(788, 679);
+            this.Controls.Add(this.dtpUpdatedAt);
+            this.Controls.Add(this.dtpCreatedAt);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblErrorPassword);
+            this.Controls.Add(this.lblErrorEmail);
+            this.Controls.Add(this.lblErrorPhoneNumber);
+            this.Controls.Add(this.lblErrorLastname);
+            this.Controls.Add(this.lblErrorUsername);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
@@ -321,5 +435,14 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Label lblErrorUsername;
+        private System.Windows.Forms.Label lblErrorLastname;
+        private System.Windows.Forms.Label lblErrorPhoneNumber;
+        private System.Windows.Forms.Label lblErrorEmail;
+        private System.Windows.Forms.Label lblErrorPassword;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpCreatedAt;
+        private System.Windows.Forms.DateTimePicker dtpUpdatedAt;
     }
 }
