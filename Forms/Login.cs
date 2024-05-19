@@ -18,6 +18,9 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         public Login()
         {
             InitializeComponent();
+
+            txtUsuario.KeyDown += new KeyEventHandler(txtUsuario_KeyDown);
+            txtClave.KeyDown += new KeyEventHandler(txtClave_KeyDown);
         }
 
         OleDbConnection conexion = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\TortilleriaDonTitoDB.accdb");
@@ -101,6 +104,52 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Mueve el foco al siguiente control que es el TextBox de la clave
+                txtClave.Focus();
+                e.Handled = true;
+                e.SuppressKeyPress = true; // Para evitar el sonido 'beep' de Windows
+            }
+        }
+
+        private void txtClave_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (txtClave.PasswordChar == '*')
+            {
+                txtClave.PasswordChar = '\0';
+                button3.Visible = false;
+                button4.Visible = true;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (txtClave.PasswordChar == '\0')
+            {
+                txtClave.PasswordChar = '*';
+                button4.Visible = false;
+                button3.Visible = true;
+            }
         }
     }
 }
