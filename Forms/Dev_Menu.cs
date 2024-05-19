@@ -53,5 +53,13 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			form.Closed += (s, args) => this.Close();
 			form.Show();
 		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Form formMenu = new MenuForm();
+			this.Hide();
+			formMenu.Closed += (s, args) => this.Close();
+			formMenu.Show();
+		}
 	}
 }
