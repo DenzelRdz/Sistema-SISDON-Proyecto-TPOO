@@ -109,13 +109,10 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             this.lbltitulo.AutoSize = true;
             this.lbltitulo.ForeColor = Color.White;
             this.lbltitulo.Font = new Font("Segoe UI Black", 20F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-            this.lbltitulo.Location = new Point(
-                (this.paneltitulo.Width - this.lbltitulo.PreferredSize.Width) + 122, // Center horizontally
-                5); // Adjust vertical position as needed
+            this.lbltitulo.Location = new Point(50, 10);
             this.lbltitulo.Text = "INICIO";
-            this.paneltitulo.Controls.Add(this.lbltitulo);
-
-
+            this.lbltitulo.Location = new Point((this.paneltitulo.Width) + 120, // Center horizontally
+      5); // Adjust vertical position as needed
             // btncerrarpanel
             this.btncerrarpanel.Dock = DockStyle.Left;
             this.btncerrarpanel.Size = new Size(50, 30);
