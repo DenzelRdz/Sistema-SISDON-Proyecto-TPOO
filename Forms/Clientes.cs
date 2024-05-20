@@ -31,7 +31,13 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			{
 				MessageBox.Show(ex.Message);
 			}
+
+
+			HideAllErrorMessages();
+
 		}
+
+
 
 		private void Clientes_Load(object sender, EventArgs e)
 		{
@@ -61,6 +67,29 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
 		}
 
+		private void HideAllErrorMessages()
+		{
+			lblNombreError.Visible = false;
+			lblApellidosError.Visible = false;
+			lblTelefonoError.Visible = false;
+			lblCorreoError.Visible = false;
+			lblRFCError.Visible = false;
+		}
+
+		private void ValidateTextBox(System.Windows.Forms.TextBox textBox, System.Windows.Forms.Label label, Func<string, bool> validationFunc, string errorMessage)
+		{
+			if (!validationFunc(textBox.Text))
+			{
+				label.Text = errorMessage;
+				label.Visible = true;
+			}
+			else
+			{
+				label.Visible = false;
+			}
+		}
+
+
 
 		private bool ValidateInputsRUD()
         {
@@ -77,48 +106,40 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
 		private bool ValidateInputs()
 		{
-			// Validar que todos los campos estén llenados
-			if (string.IsNullOrWhiteSpace(tbox_nombre.Text) ||
-				string.IsNullOrWhiteSpace(tbox_apellido.Text) ||
-				string.IsNullOrWhiteSpace(tbox_telefono.Text) ||
-				string.IsNullOrWhiteSpace(tbox_correo.Text) ||
-				string.IsNullOrWhiteSpace(tbox_rfc.Text))
-				
-			{
-				MessageBox.Show("Por favor, complete todos los campos.");
-				return false;
-			}
+            bool allValid = true;
 
-			// Validar nombre y apellido
-			if (tbox_nombre.Text.Length > 50 || tbox_apellido.Text.Length > 50) 
-			{
-				MessageBox.Show("El nombre y el apellido deben tener un máximo de 50 caracteres.");
-				return false;
-			}
+            // Validar nombre
+            ValidateTextBox(tbox_nombre, lblNombreError,
+                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                "El nombre debe contener solo letras y tener un máximo de 50 caracteres.");
+            if (lblNombreError.Visible) allValid = false;
 
-			// Validar número de teléfono
-			if (tbox_telefono.Text.Length != 10 || !tbox_telefono.Text.All(char.IsDigit))
-			{
-				MessageBox.Show("El número de teléfono debe tener exactamente 10 dígitos y contener solo números.");
-				return false;
-			}
+            // Validar apellido
+            ValidateTextBox(tbox_apellido, lblApellidosError,
+                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                "El apellido debe contener solo letras y tener un máximo de 50 caracteres.");
+            if (lblApellidosError.Visible) allValid = false;
 
-			// Validar formato de correo electrónico
-			if (!tbox_correo.Text.Contains("@") || tbox_correo.Text.Length < 5)
-			{
-				MessageBox.Show("El correo electrónico debe tener al menos 5 caracteres y contener un símbolo '@'.");
-				return false;
-			}
+            // Validar número de teléfono
+            ValidateTextBox(tbox_telefono, lblTelefonoError,
+                text => text.Length == 10 && text.All(char.IsDigit),
+                "El número de teléfono debe tener exactamente 10 dígitos y contener solo números.");
+            if (lblTelefonoError.Visible) allValid = false;
 
-			// Validar longitud del RFC
-			if (tbox_rfc.Text.Length != 13)
-			{
-				MessageBox.Show("El RFC es de 13 caracteres");
-				return false;
-			}
+            // Validar correo electrónico
+            ValidateTextBox(tbox_correo, lblCorreoError,
+                text => text.Contains("@") && text.Length >= 5,
+                "El correo electrónico debe tener al menos 5 caracteres y contener un símbolo '@'.");
+            if (lblCorreoError.Visible) allValid = false;
 
-			return true;
-		}
+            // Validar contraseña
+            ValidateTextBox(tbox_rfc, lblRFCError,
+                text => text.Length == 13,
+                "La contraseña debe tener 13 caracteres.");
+            if (lblRFCError.Visible) allValid = false;
+
+            return allValid;
+        }
 
 
 		private void btn_Nuevo_Click(object sender, EventArgs e)
@@ -373,6 +394,46 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			{
 				MessageBox.Show("Error: " + ex.Message);
 			}
+		}
+
+        private void tbox_buscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbox_nombre_TextChanged(object sender, EventArgs e)
+        {
+			ValidateTextBox(tbox_nombre, lblNombreError,
+			   text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+			   "El nombre debe contener solo letras y tener un máximo de 50 caracteres.");
+		}
+
+        private void tbox_apellido_TextChanged(object sender, EventArgs e)
+        {
+			ValidateTextBox(tbox_apellido, lblApellidosError,
+			   text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+			   "El apellido debe contener solo letras y tener un máximo de 50 caracteres.");
+		}
+
+        private void tbox_telefono_TextChanged(object sender, EventArgs e)
+        {
+			ValidateTextBox(tbox_telefono, lblTelefonoError,
+				text => text.Length == 10 && text.All(char.IsDigit),
+				"El número de teléfono debe tener exactamente 10 dígitos y contener solo números.");
+		}
+
+        private void tbox_correo_TextChanged(object sender, EventArgs e)
+        {
+			ValidateTextBox(tbox_correo, lblCorreoError,
+			   text => text.Contains("@") && text.Length >= 5,
+			   "El correo electrónico debe tener al menos 5 caracteres y contener un símbolo '@'.");
+		}
+
+        private void tbox_rfc_TextChanged(object sender, EventArgs e)
+        {
+			ValidateTextBox(tbox_rfc, lblRFCError,
+				text => text.Length == 13,
+				"El RFC debe tener 13 caracteres.");
 		}
     }
 }
