@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
 
 namespace Sistema_SISDON_Proyecto_TPOO.Forms
@@ -29,11 +28,17 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+
+            // Ocultar todos los mensajes de error al inicio
+            ConfigureDateTimePickers();
+            HideAllErrorMessages();
         }
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
             LoadData();
+            dGVemployees.CellClick += new DataGridViewCellEventHandler(dGVemployees_CellClick);
+
         }
 
         private void LoadData()
@@ -70,50 +75,71 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        private void HideAllErrorMessages()
+        {
+            lblErrorUsername.Visible = false;
+            lblErrorLastname.Visible = false;
+            lblErrorPhoneNumber.Visible = false;
+            lblErrorEmail.Visible = false;
+            lblErrorPassword.Visible = false;
+        }
 
+        private void ValidateTextBox(System.Windows.Forms.TextBox textBox, System.Windows.Forms.Label label, Func<string, bool> validationFunc, string errorMessage)
+        {
+            if (!validationFunc(textBox.Text))
+            {
+                label.Text = errorMessage;
+                label.Visible = true;
+            }
+            else
+            {
+                label.Visible = false;
+            }
+        }
         private bool ValidateInputs()
         {
-            // Validar que todos los campos estén llenados
-            if (string.IsNullOrWhiteSpace(txtusername.Text) ||
-                string.IsNullOrWhiteSpace(txtlastname.Text) ||
-                string.IsNullOrWhiteSpace(txtphonenumber.Text) ||
-                string.IsNullOrWhiteSpace(txtmail.Text) ||
-                string.IsNullOrWhiteSpace(txtpassword.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                return false;
-            }
+            bool allValid = true;
 
-            // Validar nombre y apellido
-            if (!txtusername.Text.All(char.IsLetter) || !txtlastname.Text.All(char.IsLetter) ||
-                txtusername.Text.Length > 50 || txtlastname.Text.Length > 50)
-            {
-                MessageBox.Show("El nombre y el apellido deben contener solo letras y tener un máximo de 50 caracteres.");
-                return false;
-            }
+            // Validar nombre
+            ValidateTextBox(txtusername, lblErrorUsername,
+                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                "El nombre debe contener solo letras y tener un máximo de 50 caracteres.");
+            if (lblErrorUsername.Visible) allValid = false;
+
+            // Validar apellido
+            ValidateTextBox(txtlastname, lblErrorLastname,
+                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                "El apellido debe contener solo letras y tener un máximo de 50 caracteres.");
+            if (lblErrorLastname.Visible) allValid = false;
 
             // Validar número de teléfono
-            if (txtphonenumber.Text.Length != 10 || !txtphonenumber.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("El número de teléfono debe tener exactamente 10 dígitos y contener solo números.");
-                return false;
-            }
+            ValidateTextBox(txtphonenumber, lblErrorPhoneNumber,
+                text => text.Length == 10 && text.All(char.IsDigit),
+                "El número de teléfono debe tener exactamente 10 dígitos y contener solo números.");
+            if (lblErrorPhoneNumber.Visible) allValid = false;
 
-            // Validar formato de correo electrónico
-            if (!txtmail.Text.Contains("@") || txtmail.Text.Length < 5)
-            {
-                MessageBox.Show("El correo electrónico debe tener al menos 5 caracteres y contener un símbolo '@'.");
-                return false;
-            }
+            // Validar correo electrónico
+            ValidateTextBox(txtmail, lblErrorEmail,
+                text => text.Contains("@") && text.Length >= 5,
+                "El correo electrónico debe tener al menos 5 caracteres y contener un símbolo '@'.");
+            if (lblErrorEmail.Visible) allValid = false;
 
-            // Validar longitud mínima de la contraseña
-            if (txtpassword.Text.Length < 4)
-            {
-                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.");
-                return false;
-            }
+            // Validar contraseña
+            ValidateTextBox(txtpassword, lblErrorPassword,
+                text => text.Length >= 4,
+                "La contraseña debe tener al menos 4 caracteres.");
+            if (lblErrorPassword.Visible) allValid = false;
 
-            return true;
+            return allValid;
+        }
+
+        private void ConfigureDateTimePickers()
+        {
+            dtpCreatedAt.Format = DateTimePickerFormat.Custom;
+            dtpCreatedAt.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+
+            dtpUpdatedAt.Format = DateTimePickerFormat.Custom;
+            dtpUpdatedAt.CustomFormat = "dd/MM/yyyy HH:mm:ss";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -138,6 +164,8 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 txtphonenumber.Text = row.Cells["telefono"].Value.ToString();
                 txtmail.Text = row.Cells["correo"].Value.ToString();
                 txtpassword.Text = row.Cells["contrasena"].Value.ToString();
+                dtpCreatedAt.Text = row.Cells["creadoEn"].Value.ToString();
+                dtpUpdatedAt.Text = row.Cells["actualizadoEn"].Value.ToString();
             }
         }
 
@@ -161,29 +189,40 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         }
 
-        private void txtpassword_TextChanged(object sender, EventArgs e)
+        private void txtusername_TextChanged(object sender, EventArgs e)
         {
-            txtpassword.PasswordChar = '•'; // Mostrar puntos negros
-        }
-
-        private void txtmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtphonenumber_TextChanged(object sender, EventArgs e)
-        {
-
+            ValidateTextBox(txtusername, lblErrorUsername,
+                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                "El nombre debe contener solo letras y tener un máximo de 50 caracteres.");
         }
 
         private void txtlastname_TextChanged(object sender, EventArgs e)
         {
-
+            ValidateTextBox(txtlastname, lblErrorLastname,
+                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                "El apellido debe contener solo letras y tener un máximo de 50 caracteres.");
         }
 
-        private void txtusername_TextChanged(object sender, EventArgs e)
+        private void txtphonenumber_TextChanged(object sender, EventArgs e)
         {
+            ValidateTextBox(txtphonenumber, lblErrorPhoneNumber,
+                text => text.Length == 10 && text.All(char.IsDigit),
+                "El número de teléfono debe tener exactamente 10 dígitos y contener solo números.");
+        }
 
+        private void txtmail_TextChanged(object sender, EventArgs e)
+        {
+            ValidateTextBox(txtmail, lblErrorEmail,
+                text => text.Contains("@") && text.Length >= 5,
+                "El correo electrónico debe tener al menos 5 caracteres y contener un símbolo '@'.");
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+            txtpassword.PasswordChar = '•'; // Mostrar puntos negros
+            ValidateTextBox(txtpassword, lblErrorPassword,
+                text => text.Length >= 4,
+                "La contraseña debe tener al menos 4 caracteres.");
         }
 
         private void txtid_TextChanged(object sender, EventArgs e)
@@ -203,13 +242,15 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 {
                     conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + "\\TortilleriaDonTitoDB.accdb";
                     conn.Open();
-                    using (OleDbCommand cmd = new OleDbCommand("INSERT INTO empleado (nombre, apellido, telefono, correo, contrasena) VALUES (?, ?, ?, ?, ?)", conn))
+                    using (OleDbCommand cmd = new OleDbCommand("INSERT INTO empleado (nombre, apellido, telefono, correo, contrasena, creadoEn, actualizadoEn) VALUES (?, ?, ?, ?, ?, ?, ?)", conn))
                     {
                         cmd.Parameters.AddWithValue("@nombre", txtusername.Text);
                         cmd.Parameters.AddWithValue("@apellido", txtlastname.Text);
                         cmd.Parameters.AddWithValue("@telefono", txtphonenumber.Text);
                         cmd.Parameters.AddWithValue("@correo", txtmail.Text);
                         cmd.Parameters.AddWithValue("@contrasena", txtpassword.Text);
+                        cmd.Parameters.AddWithValue("@creadoEn", dtpCreatedAt);
+                        cmd.Parameters.AddWithValue("@actualizadoEn", dtpUpdatedAt);
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Registro agregado exitosamente");
@@ -260,13 +301,14 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 {
                     conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + "\\TortilleriaDonTitoDB.accdb";
                     conn.Open();
-                    using (OleDbCommand cmd = new OleDbCommand("UPDATE empleado SET nombre = ?, apellido = ?, telefono = ?, correo = ?, contrasena = ? WHERE idEmpleado = ?", conn))
+                    using (OleDbCommand cmd = new OleDbCommand("UPDATE empleado SET nombre = ?, apellido = ?, telefono = ?, correo = ?, contrasena = ?, actualizadoEn = ? WHERE idEmpleado = ?", conn))
                     {
                         cmd.Parameters.AddWithValue("@nombre", txtusername.Text);
                         cmd.Parameters.AddWithValue("@apellido", txtlastname.Text);
                         cmd.Parameters.AddWithValue("@telefono", txtphonenumber.Text);
                         cmd.Parameters.AddWithValue("@correo", txtmail.Text);
                         cmd.Parameters.AddWithValue("@contrasena", txtpassword.Text);
+                        cmd.Parameters.Add("@actualizadoEn", OleDbType.Date).Value = DateTime.Now;
                         cmd.Parameters.AddWithValue("@idEmpleado", txtid.Text);
 
                         cmd.ExecuteNonQuery();
@@ -274,6 +316,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                     }
                 }
                 LoadData();  // Reload data after editing a record
+                dtpUpdatedAt.Value = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -289,6 +332,9 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             txtphonenumber.Clear();
             txtmail.Clear();
             txtpassword.Clear();
+            dtpCreatedAt.Value = DateTime.Now;
+            dtpUpdatedAt.Value = DateTime.Now;
+            HideAllErrorMessages();
         }
 
         private void chkbxViewPassword_CheckedChanged(object sender, EventArgs e)
@@ -353,6 +399,58 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void lblErrorUsername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblErrorEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblErrorPhoneNumber_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblErrorLastname_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblErrorPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dGVemployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dGVemployees.Rows[e.RowIndex];
+
+                txtid.Text = row.Cells["idEmpleado"].Value.ToString();
+                txtusername.Text = row.Cells["nombre"].Value.ToString();
+                txtlastname.Text = row.Cells["apellido"].Value.ToString();
+                txtphonenumber.Text = row.Cells["telefono"].Value.ToString();
+                txtmail.Text = row.Cells["correo"].Value.ToString();
+                txtpassword.Text = row.Cells["contrasena"].Value.ToString();
+                dtpCreatedAt.Text = row.Cells["creadoEn"].Value.ToString();
+                dtpUpdatedAt.Text = row.Cells["actualizadoEn"].Value.ToString();
+            }
+        }
+
+        private void dtpCreatedAt_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpUpdatedAt_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
