@@ -19,7 +19,7 @@ namespace Factura
             int cort;
             public static string LineasGuion()
             {
-                string LineaGuion = "----------------------------------------";   // agrega lineas separadoras -
+                string LineaGuion = "-------------------------------------------------";   // agrega lineas separadoras -
 
                 return line.AppendLine(LineaGuion).ToString();
             }
@@ -27,7 +27,7 @@ namespace Factura
 
             public static void EncabezadoVenta()
             {
-                string LineEncavesado = " Prod          Cant   Precio    Total";   // agrega lineas de  encabezados
+                string LineEncavesado = "          Prod          Cant    Precio     Total";   // agrega lineas de  encabezados
                 line.AppendLine(LineEncavesado);
             }
             public void TextoIzquierda(string par1)                          // agrega texto a la izquierda
