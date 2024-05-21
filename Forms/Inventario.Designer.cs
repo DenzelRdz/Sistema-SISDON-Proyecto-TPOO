@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.inventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tortilleriaDonTitoDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tortilleriaDonTitoDBDataSet = new Sistema_SISDON_Proyecto_TPOO.TortilleriaDonTitoDBDataSet();
@@ -60,40 +59,20 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.idProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existenciaProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actualizadoEnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existenciaProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creadoEn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actualizadoEn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idProductoDataGridViewTextBoxColumn,
-            this.nombreProductoDataGridViewTextBoxColumn,
-            this.precioProductoDataGridViewTextBoxColumn,
-            this.existenciaProductoDataGridViewTextBoxColumn,
-            this.descripcionProductoDataGridViewTextBoxColumn,
-            this.creadoEnDataGridViewTextBoxColumn,
-            this.actualizadoEnDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.inventarioBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1114, 425);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // inventarioBindingSource
             // 
@@ -350,61 +329,82 @@
             this.btnEdit.Text = "Editar";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
-            // idProductoDataGridViewTextBoxColumn
+            // dataGridView1
             // 
-            this.idProductoDataGridViewTextBoxColumn.DataPropertyName = "idProducto";
-            this.idProductoDataGridViewTextBoxColumn.HeaderText = "idProducto";
-            this.idProductoDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.idProductoDataGridViewTextBoxColumn.Name = "idProductoDataGridViewTextBoxColumn";
-            this.idProductoDataGridViewTextBoxColumn.Width = 150;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idProducto,
+            this.nombreProducto,
+            this.precioProducto,
+            this.existenciaProducto,
+            this.descripcionProducto,
+            this.creadoEn,
+            this.actualizadoEn});
+            this.dataGridView1.DataSource = this.inventarioBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(33, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(1114, 425);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // nombreProductoDataGridViewTextBoxColumn
+            // idProducto
             // 
-            this.nombreProductoDataGridViewTextBoxColumn.DataPropertyName = "nombreProducto";
-            this.nombreProductoDataGridViewTextBoxColumn.HeaderText = "nombreProducto";
-            this.nombreProductoDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.nombreProductoDataGridViewTextBoxColumn.Name = "nombreProductoDataGridViewTextBoxColumn";
-            this.nombreProductoDataGridViewTextBoxColumn.Width = 150;
+            this.idProducto.DataPropertyName = "idProducto";
+            this.idProducto.HeaderText = "idProducto";
+            this.idProducto.MinimumWidth = 8;
+            this.idProducto.Name = "idProducto";
+            this.idProducto.Width = 150;
             // 
-            // precioProductoDataGridViewTextBoxColumn
+            // nombreProducto
             // 
-            this.precioProductoDataGridViewTextBoxColumn.DataPropertyName = "precioProducto";
-            this.precioProductoDataGridViewTextBoxColumn.HeaderText = "precioProducto";
-            this.precioProductoDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.precioProductoDataGridViewTextBoxColumn.Name = "precioProductoDataGridViewTextBoxColumn";
-            this.precioProductoDataGridViewTextBoxColumn.Width = 150;
+            this.nombreProducto.DataPropertyName = "nombreProducto";
+            this.nombreProducto.HeaderText = "nombreProducto";
+            this.nombreProducto.MinimumWidth = 8;
+            this.nombreProducto.Name = "nombreProducto";
+            this.nombreProducto.Width = 150;
             // 
-            // existenciaProductoDataGridViewTextBoxColumn
+            // precioProducto
             // 
-            this.existenciaProductoDataGridViewTextBoxColumn.DataPropertyName = "existenciaProducto";
-            this.existenciaProductoDataGridViewTextBoxColumn.HeaderText = "existenciaProducto";
-            this.existenciaProductoDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.existenciaProductoDataGridViewTextBoxColumn.Name = "existenciaProductoDataGridViewTextBoxColumn";
-            this.existenciaProductoDataGridViewTextBoxColumn.Width = 150;
+            this.precioProducto.DataPropertyName = "precioProducto";
+            this.precioProducto.HeaderText = "precioProducto";
+            this.precioProducto.MinimumWidth = 8;
+            this.precioProducto.Name = "precioProducto";
+            this.precioProducto.Width = 150;
             // 
-            // descripcionProductoDataGridViewTextBoxColumn
+            // existenciaProducto
             // 
-            this.descripcionProductoDataGridViewTextBoxColumn.DataPropertyName = "descripcionProducto";
-            this.descripcionProductoDataGridViewTextBoxColumn.HeaderText = "descripcionProducto";
-            this.descripcionProductoDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.descripcionProductoDataGridViewTextBoxColumn.Name = "descripcionProductoDataGridViewTextBoxColumn";
-            this.descripcionProductoDataGridViewTextBoxColumn.Width = 150;
+            this.existenciaProducto.DataPropertyName = "existenciaProducto";
+            this.existenciaProducto.HeaderText = "existenciaProducto";
+            this.existenciaProducto.MinimumWidth = 8;
+            this.existenciaProducto.Name = "existenciaProducto";
+            this.existenciaProducto.Width = 150;
             // 
-            // creadoEnDataGridViewTextBoxColumn
+            // descripcionProducto
             // 
-            this.creadoEnDataGridViewTextBoxColumn.DataPropertyName = "creadoEn";
-            this.creadoEnDataGridViewTextBoxColumn.HeaderText = "creadoEn";
-            this.creadoEnDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.creadoEnDataGridViewTextBoxColumn.Name = "creadoEnDataGridViewTextBoxColumn";
-            this.creadoEnDataGridViewTextBoxColumn.Width = 150;
+            this.descripcionProducto.DataPropertyName = "descripcionProducto";
+            this.descripcionProducto.HeaderText = "descripcionProducto";
+            this.descripcionProducto.MinimumWidth = 8;
+            this.descripcionProducto.Name = "descripcionProducto";
+            this.descripcionProducto.Width = 150;
             // 
-            // actualizadoEnDataGridViewTextBoxColumn
+            // creadoEn
             // 
-            this.actualizadoEnDataGridViewTextBoxColumn.DataPropertyName = "actualizadoEn";
-            this.actualizadoEnDataGridViewTextBoxColumn.HeaderText = "actualizadoEn";
-            this.actualizadoEnDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.actualizadoEnDataGridViewTextBoxColumn.Name = "actualizadoEnDataGridViewTextBoxColumn";
-            this.actualizadoEnDataGridViewTextBoxColumn.Width = 150;
+            this.creadoEn.DataPropertyName = "creadoEn";
+            this.creadoEn.HeaderText = "creadoEn";
+            this.creadoEn.MinimumWidth = 8;
+            this.creadoEn.Name = "creadoEn";
+            this.creadoEn.Width = 150;
+            // 
+            // actualizadoEn
+            // 
+            this.actualizadoEn.DataPropertyName = "actualizadoEn";
+            this.actualizadoEn.HeaderText = "actualizadoEn";
+            this.actualizadoEn.MinimumWidth = 8;
+            this.actualizadoEn.Name = "actualizadoEn";
+            this.actualizadoEn.Width = 150;
             // 
             // Inventario
             // 
@@ -440,19 +440,17 @@
             this.Name = "Inventario";
             this.Text = "Inventario";
             this.Load += new System.EventHandler(this.Inventario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tortilleriaDonTitoDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
 		}
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource tortilleriaDonTitoDBDataSetBindingSource;
         private TortilleriaDonTitoDBDataSet tortilleriaDonTitoDBDataSet;
         private System.Windows.Forms.BindingSource inventarioBindingSource;
@@ -483,12 +481,13 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProductoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreProductoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioProductoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn existenciaProductoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionProductoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn creadoEnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actualizadoEnDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn existenciaProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn creadoEn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actualizadoEn;
     }
 }
