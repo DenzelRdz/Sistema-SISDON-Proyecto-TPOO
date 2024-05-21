@@ -114,6 +114,7 @@
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(644, 26);
             this.textBoxSearch.TabIndex = 2;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // btnSearch
             // 
@@ -123,6 +124,7 @@
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_1);
             // 
             // lblId
             // 
@@ -175,6 +177,7 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(317, 26);
             this.textBoxPrice.TabIndex = 9;
+            this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged_1);
             // 
             // lblExistence
             // 
@@ -192,6 +195,7 @@
             this.textBoxExistence.Name = "textBoxExistence";
             this.textBoxExistence.Size = new System.Drawing.Size(317, 26);
             this.textBoxExistence.TabIndex = 11;
+            this.textBoxExistence.TextChanged += new System.EventHandler(this.textBoxExistence_TextChanged_1);
             // 
             // lblDescription
             // 
@@ -209,6 +213,7 @@
             this.textBoxDesc.Name = "textBoxDesc";
             this.textBoxDesc.Size = new System.Drawing.Size(317, 26);
             this.textBoxDesc.TabIndex = 13;
+            this.textBoxDesc.TextChanged += new System.EventHandler(this.textBoxDesc_TextChanged_1);
             // 
             // lblCreatedAt
             // 
@@ -277,6 +282,7 @@
             this.lblErrorExistence.Size = new System.Drawing.Size(51, 20);
             this.lblErrorExistence.TabIndex = 25;
             this.lblErrorExistence.Text = "label2";
+            this.lblErrorExistence.Click += new System.EventHandler(this.lblErrorExistence_Click);
             // 
             // lblErrorDescription
             // 
@@ -298,6 +304,7 @@
             this.btnclean.TabIndex = 32;
             this.btnclean.Text = "Limpiar";
             this.btnclean.UseVisualStyleBackColor = true;
+            this.btnclean.Click += new System.EventHandler(this.btnclean_Click_1);
             // 
             // btnCreate
             // 
@@ -308,6 +315,7 @@
             this.btnCreate.TabIndex = 31;
             this.btnCreate.Text = "Crear";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnDelete
             // 
@@ -318,6 +326,7 @@
             this.btnDelete.TabIndex = 30;
             this.btnDelete.Text = "Borrar";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // btnEdit
             // 
@@ -328,6 +337,7 @@
             this.btnEdit.TabIndex = 29;
             this.btnEdit.Text = "Editar";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click_1);
             // 
             // dataGridView1
             // 

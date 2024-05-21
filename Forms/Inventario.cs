@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Sistema_SISDON_Proyecto_TPOO.Forms
 {
-	public partial class Inventario : Form
-	{
+    public partial class Inventario : Form
+    {
         private OleDbConnection conn = new OleDbConnection();
         string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
         public Inventario()
-		{
+        {
             InitializeComponent();
             try
             {
@@ -105,20 +105,20 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             // Validar precio
             ValidateTextBox(textBoxPrice, lblErrorPrice,
                 text => text.Length > 0 && text.All(char.IsDigit),
-                "El precio debe ser un numero"); ;
+                "El precio debe ser un numero");
             if (lblErrorPrice.Visible) allValid = false;
 
             // Validar existencia
-            ValidateTextBox(textBoxExistence, lblExistence,
+            ValidateTextBox(textBoxExistence, lblErrorExistence,
                 text => text.Length > 0 && text.All(char.IsDigit),
                 "La existencia debe ser un digito igual o mayor a 0.");
-            if (lblExistence.Visible) allValid = false;
+            if (lblErrorExistence.Visible) allValid = false;
 
             // Validar descripcion
-            ValidateTextBox(textBoxDesc, lblDescription,
+            ValidateTextBox(textBoxDesc, lblErrorDescription,
                 text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 200,
-                "El nombre debe contener solo letras y tener un máximo de 200 caracteres.");
-            if (lblDescription.Visible) allValid = false;
+                "La descripcion debe contener solo letras y tener un máximo de 200 caracteres.");
+            if (lblErrorDescription.Visible) allValid = false;
 
             return allValid;
         }
@@ -205,38 +205,33 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBoxName_TextChanged(object sender, EventArgs e)
-        {
             ValidateTextBox(textBoxName, lblErrorProductName,
                 text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
                 "El nombre debe contener solo letras y tener un máximo de 50 caracteres.");
         }
 
-        private void textBoxPrice_TextChanged(object sender, EventArgs e)
+        private void textBoxPrice_TextChanged_1(object sender, EventArgs e)
         {
             ValidateTextBox(textBoxPrice, lblErrorPrice,
-                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                text => text.Length > 0 && text.All(char.IsDigit),
                 "El precio debe ser un numero");
         }
 
-        private void textBoxExistence_TextChanged(object sender, EventArgs e)
+        private void textBoxExistence_TextChanged_1(object sender, EventArgs e)
         {
             ValidateTextBox(textBoxExistence, lblErrorExistence,
-                text => text.Length == 10 && text.All(char.IsDigit),
+               text => text.Length > 0 && text.All(char.IsDigit),
                 "La existencia debe ser un digito igual o mayor a 0.");
         }
 
-        private void textBoxDesc_TextChanged(object sender, EventArgs e)
+        private void textBoxDesc_TextChanged_1(object sender, EventArgs e)
         {
             ValidateTextBox(textBoxDesc, lblErrorDescription,
-                text => text.Contains("@") && text.Length >= 5,
-                "El nombre debe contener solo letras y tener un máximo de 200 caracteres.");
+                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 200,
+                "La descripcion debe contener solo letras y tener un máximo de 200 caracteres.");
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnCreate_Click_1(object sender, EventArgs e)
         {
             if (!ValidateInputs())
             {
@@ -268,7 +263,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
 
             try
@@ -292,7 +287,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnEdit_Click_1(object sender, EventArgs e)
         {
             if (!ValidateInputs())
             {
@@ -325,7 +320,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        private void btnclean_Click(object sender, EventArgs e)
+        private void btnclean_Click_1(object sender, EventArgs e)
         {
             textBoxId.Clear();
             textBoxName.Clear();
@@ -337,7 +332,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             HideAllErrorMessages();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearch_Click_1(object sender, EventArgs e)
         {
             string searchTerm = textBoxSearch.Text.Trim();
 
@@ -382,5 +377,16 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblErrorExistence_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
