@@ -74,8 +74,8 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
             CreateMenuButton("Clientes", btnclientes_Click),
             CreateMenuButton("Inventario", btninventario_Click),
             CreateMenuButton("Registro de Ventas", btnregistroventas_Click),
-            CreateMenuButton("Registro de Pedidos", btnregistropedidos_Click),
-            CreateMenuButton("Realizar Pedido", btnrealizarpedido_Click),
+         //   CreateMenuButton("Registro de Pedidos", btnregistropedidos_Click),
+          //  CreateMenuButton("Realizar Pedido", btnrealizarpedido_Click),
             CreateMenuButton("Realizar Venta", btnrealizarventa_Click),
             CreateMenuButton("Cerrar sesión", btncerrarsesion_Click)
             });
@@ -309,10 +309,10 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btnregistroventas_Click(object sender, EventArgs e)
         {
-            // OpenChildForm(new RegistroVentasForm(), sender);
+            OpenChildForm(new RegistroDeVentas(), sender);
         }
 
-        private void btnrealizarpedido_Click(object sender, EventArgs e)
+        /*private void btnrealizarpedido_Click(object sender, EventArgs e)
         {
             //   OpenChildForm(new RealizarPedidoForm(), sender);
         }
@@ -320,7 +320,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         private void btnregistropedidos_Click(object sender, EventArgs e)
         {
             //  OpenChildForm(new RegistroPedidosForm(), sender);
-        }
+        */
         private void btncerrarsesion_Click(object sender, EventArgs e)
         {
             //  OpenChildForm(new CerrarSesionForm(), sender);
