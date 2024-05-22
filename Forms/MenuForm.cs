@@ -154,6 +154,11 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btnCerrarSistema_Click(object sender, EventArgs e)
         {
+            DialogResult Salir = MessageBox.Show("¿Seguro que quieres cerrar sesión y salir?", "Salir de la aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (Salir == DialogResult.No)
+            {
+                return;
+            }
             Application.Exit();
         }
 
@@ -323,7 +328,14 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         */
         private void btncerrarsesion_Click(object sender, EventArgs e)
         {
-            //  OpenChildForm(new CerrarSesionForm(), sender);
+            DialogResult Salir = MessageBox.Show("¿Seguro que quieres cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (Salir == DialogResult.No)
+            {
+                return;
+            }
+            this.Dispose();
+            Login pro = new Login();
+            pro.ShowDialog();
         }
     }
 }

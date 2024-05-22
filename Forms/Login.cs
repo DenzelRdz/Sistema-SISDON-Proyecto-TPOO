@@ -9,18 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.OleDb;
+using System.Runtime.InteropServices;
 
 
 namespace Sistema_SISDON_Proyecto_TPOO.Forms
 {
     public partial class Login : Form
     {
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         public Login()
         {
             InitializeComponent();
-
+            
+            
             txtUsuario.KeyDown += new KeyEventHandler(txtUsuario_KeyDown);
             txtClave.KeyDown += new KeyEventHandler(txtClave_KeyDown);
+
         }
 
         OleDbConnection conexion = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\TortilleriaDonTitoDB.accdb");
@@ -150,6 +157,44 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
                 button4.Visible = false;
                 button3.Visible = true;
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
