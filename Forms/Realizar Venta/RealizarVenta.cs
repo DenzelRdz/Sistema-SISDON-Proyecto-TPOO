@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -452,14 +453,168 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			}
 		}
 
+		// Clase Factura y DetalleVenta
+		public class Factura
+		{
+			public string NombreEmpresa { get; set; }
+			public string DireccionEmpresa { get; set; }
+			public string CorreoEmpresa { get; set; }
+			public string TelefonoEmpresa { get; set; }
+			public string NombreCliente { get; set; }
+			public int IdCliente { get; set; }
+			public int NumeroVenta { get; set; }
+			public DateTime FechaVenta { get; set; }
+			public List<DetalleVenta> Detalles { get; set; }
+			public double SubTotal { get; set; }
+			public double IGV { get; set; }
+			public double Total { get; set; }
+		}
+
+		public class DetalleVenta
+		{
+			public string Producto { get; set; }
+			public int Cantidad { get; set; }
+			public double PrecioUnitario { get; set; }
+			public double Total => Cantidad * PrecioUnitario;
+		}
+
+		// Métodos en RealizarVenta
+		private Factura GenerarFactura()
+		{
+			var factura = new Factura
+			{
+				NombreEmpresa = "Tortillas de Harina Don Tito",
+				DireccionEmpresa = "Calle Violeta 239, Colonia Unidad Tres Caminos, Guadalupe, Nuevo León",
+				CorreoEmpresa = "dontito@gmail.com",
+				TelefonoEmpresa = "8115446545",
+				NombreCliente = lbl_StatusCliente.Text.Replace("Bienvenido ", ""),
+				IdCliente = globalClienteID,
+				NumeroVenta = 1,
+				FechaVenta = DateTime.Now,
+				Detalles = new List<DetalleVenta>(),
+				SubTotal = 0,
+				IGV = 0,
+				Total = 0
+			};
+
+			foreach (DataGridViewRow row in dgv_TablaDeProductos.Rows)
+			{
+				if (row.Cells["idProducto"].Value != null)
+				{
+					var detalle = new DetalleVenta
+					{
+						Producto = row.Cells["nombreProducto"].Value.ToString(),
+						Cantidad = Convert.ToInt32(row.Cells["cantidadProducto"].Value),
+						PrecioUnitario = Convert.ToDouble(row.Cells["precioUnitarioProducto"].Value)
+					};
+					factura.Detalles.Add(detalle);
+					factura.SubTotal += detalle.Total;
+				}
+			}
+
+			factura.IGV = factura.SubTotal * 0.18;
+			factura.Total = factura.SubTotal + factura.IGV;
+
+			return factura;
+		}
+
+		private void ImprimirFactura(Factura factura)
+		{
+			PrintDocument pd = new PrintDocument();
+			pd.PrintPage += (sender, args) => PrintPageHandler(sender, args, factura);
+			PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog
+			{
+				Document = pd
+			};
+			printPreviewDialog.ShowDialog();
+		}
+
+		private void PrintPageHandler(object sender, PrintPageEventArgs e, Factura factura)
+		{
+			Graphics g = e.Graphics;
+			Font font = new Font("Arial", 12);
+			Font fontBold = new Font("Arial", 12, FontStyle.Bold);
+			Font fontTitle = new Font("Arial", 18, FontStyle.Bold);
+			int startX = 50;
+			int startY = 50;
+			int offsetY = 40;
+
+			// Cargar el logo desde los recursos
+			Image logo = Sistema_SISDON_Proyecto_TPOO.Properties.Resources.increible;
+
+			// Definir el tamaño deseado para el logo
+			int logoWidth = 100; // Ancho del logo en píxeles
+			int logoHeight = 100; // Alto del logo en píxeles
+
+			// Calcular la posición del logo en el centro superior
+			int logoX = (e.PageBounds.Width / 2) - (logoWidth / 2);
+			int logoY = startY;
+
+			// Dibujar el logo en el centro superior con el tamaño ajustado
+			g.DrawImage(logo, logoX, logoY, logoWidth, logoHeight);
+			offsetY += logoHeight + 20;
+
+			// Dibujar título y datos de la empresa
+			g.DrawString("Factura", fontTitle, Brushes.Black, startX, startY + offsetY);
+			offsetY += 40;
+
+			g.DrawString(factura.NombreEmpresa, fontBold, Brushes.Black, startX, startY + offsetY);
+			offsetY += 20;
+			g.DrawString(factura.DireccionEmpresa, font, Brushes.Black, startX, startY + offsetY);
+			offsetY += 20;
+			g.DrawString(factura.CorreoEmpresa, font, Brushes.Black, startX, startY + offsetY);
+			offsetY += 20;
+			g.DrawString(factura.TelefonoEmpresa, font, Brushes.Black, startX, startY + offsetY);
+			offsetY += 40;
+
+			// Dibujar datos del cliente y la venta
+			g.DrawString($"Cliente: {factura.NombreCliente}", fontBold, Brushes.Black, startX, startY + offsetY);
+			offsetY += 20;
+			g.DrawString($"ID Cliente: {factura.IdCliente}", font, Brushes.Black, startX, startY + offsetY);
+			offsetY += 20;
+			g.DrawString($"Fecha: {factura.FechaVenta}", font, Brushes.Black, startX, startY + offsetY);
+			offsetY += 40;
+
+			// Dibujar encabezados de la tabla de productos
+			g.DrawString("Producto", fontBold, Brushes.Black, startX, startY + offsetY);
+			g.DrawString("Cantidad", fontBold, Brushes.Black, startX + 200, startY + offsetY);
+			g.DrawString("Precio Unitario", fontBold, Brushes.Black, startX + 300, startY + offsetY);
+			g.DrawString("Total", fontBold, Brushes.Black, startX + 450, startY + offsetY);
+			offsetY += 20;
+
+			// Dibujar detalles de los productos
+			foreach (var detalle in factura.Detalles)
+			{
+				g.DrawString(detalle.Producto, font, Brushes.Black, startX, startY + offsetY);
+				g.DrawString(detalle.Cantidad.ToString(), font, Brushes.Black, startX + 200, startY + offsetY);
+				g.DrawString(detalle.PrecioUnitario.ToString("C"), font, Brushes.Black, startX + 300, startY + offsetY);
+				g.DrawString(detalle.Total.ToString("C"), font, Brushes.Black, startX + 450, startY + offsetY);
+				offsetY += 20;
+			}
+
+			// Dibujar totales
+			offsetY += 40;
+			g.DrawString($"Sub Total: {factura.SubTotal:C}", fontBold, Brushes.Black, startX, startY + offsetY);
+			offsetY += 20;
+			g.DrawString($"IGV: {factura.IGV:C}", fontBold, Brushes.Black, startX, startY + offsetY);
+			offsetY += 20;
+			g.DrawString($"Total: {factura.Total:C}", fontBold, Brushes.Black, startX, startY + offsetY);
+		}
+
+		private void btn_Factura_Click(object sender, EventArgs e)
+		{
+			var factura = GenerarFactura();
+			ImprimirFactura(factura);
+		}
+		//Codigo de ticket
 		private void btn_Ticket_Click(object sender, EventArgs e)
 		{
 
 		}
 
-		private void btn_Factura_Click(object sender, EventArgs e)
+		private void btn_PagoConTarjeta_Click(object sender, EventArgs e)
 		{
-
+			ComprobarMetodoDePagoYRealizarVenta(2);
 		}
 	}
 }

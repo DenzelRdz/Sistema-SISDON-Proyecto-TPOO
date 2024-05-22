@@ -30,6 +30,11 @@
 		{
 			this.gbox_TablaDeProductos = new System.Windows.Forms.GroupBox();
 			this.dgv_TablaDeProductos = new System.Windows.Forms.DataGridView();
+			this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.cantidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.precioUnitarioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.precioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gbox_Productos = new System.Windows.Forms.GroupBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.tbox_CantidadProd = new System.Windows.Forms.TextBox();
@@ -58,11 +63,6 @@
 			this.btn_Ticket = new System.Windows.Forms.Button();
 			this.btn_Factura = new System.Windows.Forms.Button();
 			this.gbox_Imprimir = new System.Windows.Forms.GroupBox();
-			this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.cantidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.precioUnitarioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.precioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gbox_TablaDeProductos.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_TablaDeProductos)).BeginInit();
 			this.gbox_Productos.SuspendLayout();
@@ -99,6 +99,41 @@
 			this.dgv_TablaDeProductos.RowHeadersVisible = false;
 			this.dgv_TablaDeProductos.Size = new System.Drawing.Size(528, 429);
 			this.dgv_TablaDeProductos.TabIndex = 20;
+			// 
+			// idProducto
+			// 
+			this.idProducto.FillWeight = 20F;
+			this.idProducto.HeaderText = "ID";
+			this.idProducto.Name = "idProducto";
+			this.idProducto.ReadOnly = true;
+			// 
+			// nombreProducto
+			// 
+			this.nombreProducto.FillWeight = 200F;
+			this.nombreProducto.HeaderText = "Producto";
+			this.nombreProducto.Name = "nombreProducto";
+			this.nombreProducto.ReadOnly = true;
+			// 
+			// cantidadProducto
+			// 
+			this.cantidadProducto.FillWeight = 40F;
+			this.cantidadProducto.HeaderText = "Cantidad";
+			this.cantidadProducto.Name = "cantidadProducto";
+			this.cantidadProducto.ReadOnly = true;
+			// 
+			// precioUnitarioProducto
+			// 
+			this.precioUnitarioProducto.FillWeight = 40F;
+			this.precioUnitarioProducto.HeaderText = "Precio Unitario";
+			this.precioUnitarioProducto.Name = "precioUnitarioProducto";
+			this.precioUnitarioProducto.ReadOnly = true;
+			// 
+			// precioFinal
+			// 
+			this.precioFinal.FillWeight = 40F;
+			this.precioFinal.HeaderText = "Precio Total";
+			this.precioFinal.Name = "precioFinal";
+			this.precioFinal.ReadOnly = true;
 			// 
 			// gbox_Productos
 			// 
@@ -312,6 +347,7 @@
 			this.btn_PagoConTarjeta.TabIndex = 9;
 			this.btn_PagoConTarjeta.Text = "Pago con Tarjeta";
 			this.btn_PagoConTarjeta.UseVisualStyleBackColor = true;
+			this.btn_PagoConTarjeta.Click += new System.EventHandler(this.btn_PagoConTarjeta_Click);
 			// 
 			// btn_PagoEnEfectivo
 			// 
@@ -375,41 +411,6 @@
 			this.gbox_Imprimir.TabIndex = 0;
 			this.gbox_Imprimir.TabStop = false;
 			this.gbox_Imprimir.Text = "Imprimir";
-			// 
-			// idProducto
-			// 
-			this.idProducto.FillWeight = 20F;
-			this.idProducto.HeaderText = "ID";
-			this.idProducto.Name = "idProducto";
-			this.idProducto.ReadOnly = true;
-			// 
-			// nombreProducto
-			// 
-			this.nombreProducto.FillWeight = 200F;
-			this.nombreProducto.HeaderText = "Producto";
-			this.nombreProducto.Name = "nombreProducto";
-			this.nombreProducto.ReadOnly = true;
-			// 
-			// cantidadProducto
-			// 
-			this.cantidadProducto.FillWeight = 40F;
-			this.cantidadProducto.HeaderText = "Cantidad";
-			this.cantidadProducto.Name = "cantidadProducto";
-			this.cantidadProducto.ReadOnly = true;
-			// 
-			// precioUnitarioProducto
-			// 
-			this.precioUnitarioProducto.FillWeight = 40F;
-			this.precioUnitarioProducto.HeaderText = "Precio Unitario";
-			this.precioUnitarioProducto.Name = "precioUnitarioProducto";
-			this.precioUnitarioProducto.ReadOnly = true;
-			// 
-			// precioFinal
-			// 
-			this.precioFinal.FillWeight = 40F;
-			this.precioFinal.HeaderText = "Precio Total";
-			this.precioFinal.Name = "precioFinal";
-			this.precioFinal.ReadOnly = true;
 			// 
 			// RealizarVenta
 			// 
