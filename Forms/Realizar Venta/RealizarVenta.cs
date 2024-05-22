@@ -607,13 +607,21 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 				offsetY += 20;
 			}
 
-			// Dibujar totales
+			/*// Dibujar totales ORIGINAL
 			offsetY += 40;
 			g.DrawString($"Sub Total: {factura.SubTotal:C}", fontBold, Brushes.Black, startX, startY + offsetY);
 			offsetY += 20;
 			g.DrawString($"IGV: {factura.IGV:C}", fontBold, Brushes.Black, startX, startY + offsetY);
 			offsetY += 20;
-			g.DrawString($"Total: {factura.Total:C}", fontBold, Brushes.Black, startX, startY + offsetY);
+			g.DrawString($"Total: {factura.Total:C}", fontBold, Brushes.Black, startX, startY + offsetY);*/
+
+			// Dibujar totales IVA INCLUIDO
+			offsetY += 40;
+			g.DrawString($"Total: {factura.SubTotal:C}", fontBold, Brushes.Black, startX, startY + offsetY);
+			//offsetY += 20;
+			//g.DrawString($"IGV: {factura.IGV:C}", fontBold, Brushes.Black, startX, startY + offsetY);
+			//offsetY += 20;
+			//g.DrawString($"Total: {factura.Total:C}", fontBold, Brushes.Black, startX, startY + offsetY);
 		}
 
 		private void btn_Factura_Click(object sender, EventArgs e)
@@ -974,7 +982,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 			Ticket1.AgregaTotales("Total", globalTotalPrecio); // imprime linea con total
 			Ticket1.AgregaTotales("Efectivo Entregado:", globalTotalPrecio + globalTotalCambio);
 			Ticket1.AgregaTotales("Efectivo Devuelto:", globalTotalCambio);
-			Ticket1.AgregaTotales("IVA: ", globalTotalPrecio * 1.16);
+			//Ticket1.AgregaTotales("IVA: ", globalTotalPrecio * 1.16);
 
 
 			// Ticket1.LineasTotales(); // imprime linea 
