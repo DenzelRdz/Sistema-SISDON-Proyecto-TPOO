@@ -314,7 +314,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btnregistroventas_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new RegistroDeVentas(), sender);
+            OpenChildForm(new VisualizacionVentas(), sender);
         }
 
         /*private void btnrealizarpedido_Click(object sender, EventArgs e)
