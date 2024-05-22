@@ -253,6 +253,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TortilleriaDonTitoDBDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dev_Menu.resx">
       <DependentUpon>Dev_Menu.cs</DependentUpon>
     </EmbeddedResource>
