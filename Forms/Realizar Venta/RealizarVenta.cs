@@ -17,6 +17,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 		private OleDbConnection conn = new OleDbConnection();
 		string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 		int globalClienteID = 6;
+		int globalEmpleadoID = 0;
 
 		public RealizarVenta()
 		{
@@ -59,6 +60,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 					else {
 						while (acReader.Read()) { lbl_Empleado_Status.Text = "Bienvenido " + acReader["nombre"].ToString(); }
 						lbl_Empleado_Status.ForeColor = Color.Green;
+						globalEmpleadoID = empleadoID;
 					}
 					conn.Close();
 				}
@@ -222,25 +224,27 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 				int.TryParse(row.Cells["cantidadProducto"].Value?.ToString(), out ProductoCantidad);
 				Double.TryParse(row.Cells["precioUnitarioProducto"].Value?.ToString(), out ProductoPrecio);
 				Double.TryParse(row.Cells["precioFinal"].Value?.ToString(), out ProductoTotal);
-				MessageBox.Show($"ID: {ProductoID}\nNombre: {ProductoNombre}\nCantidad: {ProductoCantidad}\nPrecio: {ProductoPrecio}\nTotal: {ProductoTotal}");
 
+				try
+				{
+					conn.Open();
+					OleDbCommand acCommand = new OleDbCommand();
+					acCommand.Connection = conn;
+					acCommand.CommandText = "INSERT INTO detalle_venta (idProducto, cantidadProducto, precioUnitarioProducto, precioFinal, idEmpleado) VALUES (?, ?, ?, ?, ?)";
+					acCommand.Parameters.AddWithValue("?", ProductoID);
+					acCommand.Parameters.AddWithValue("?", ProductoCantidad);
+					acCommand.Parameters.AddWithValue("?", ProductoPrecio);
+					acCommand.Parameters.AddWithValue("?", ProductoTotal);
+					acCommand.Parameters.AddWithValue("?", globalEmpleadoID);
+					acCommand.ExecuteNonQuery();
+					conn.Close();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+					conn.Close();
+				}
 			}
-			/*try
-			{
-				conn.Open();
-				OleDbCommand acCommand = new OleDbCommand();
-				acCommand.Connection = conn;
-				acCommand.CommandText = "INSERT INTO detalle_venta (idProducto, cantidadProducto, precioUnitarioProducto, idEmpleado) VALUES ('" + tbox_id.Text + "','" + tbox_nombre.Text + "','" + tbox_apellido.Text + "','" + tbox_telefono.Text + "','" + tbox_correo.Text + "','" + dtp_creadoen.Text + "','" + dtp_actualizadoen.Text + "','" + tbox_rfc.Text + "')";
-				acCommand.ExecuteNonQuery();
-				conn.Close();
-
-				MessageBox.Show("Connection Succesfull");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-				conn.Close();
-			}*/
 		}
 	}
 }
