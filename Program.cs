@@ -17,7 +17,7 @@ namespace Sistema_SISDON_Proyecto_TPOO
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Dev_Menu());
+			Application.Run(new Login());
 			System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-MX");
 			System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es-MX");
 		}
