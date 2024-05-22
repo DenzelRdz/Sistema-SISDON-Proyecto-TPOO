@@ -309,7 +309,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
         private void btnrealizarventa_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new GMCRUD(), sender);
+            OpenChildForm(new RealizarVenta(), sender);
         }
 
         private void btnregistroventas_Click(object sender, EventArgs e)
