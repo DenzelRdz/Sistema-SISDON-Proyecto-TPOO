@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -96,9 +97,9 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         {
             bool allValid = true;
 
-            // Validar nombre
-            ValidateTextBox(textBoxName, lblErrorProductName,
-                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+			// Validar nombre
+			ValidateTextBox(textBoxName, lblErrorProductName,
+                text => !string.IsNullOrWhiteSpace(text) && Regex.Replace(text, @"\s+", "").All(char.IsLetter) && text.Length <= 50,
                 "El nombre debe contener solo letras y tener un máximo de 50 caracteres.");
             if (lblErrorProductName.Visible) allValid = false;
 
@@ -116,7 +117,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
 
             // Validar descripcion
             ValidateTextBox(textBoxDesc, lblErrorDescription,
-                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 200,
+                text => !string.IsNullOrWhiteSpace(text) && Regex.Replace(text, @"\s+", "").Any(char.IsLetter) && text.Length <= 200,
                 "La descripcion debe contener solo letras y tener un máximo de 200 caracteres.");
             if (lblErrorDescription.Visible) allValid = false;
 
@@ -206,7 +207,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             ValidateTextBox(textBoxName, lblErrorProductName,
-                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 50,
+                text => !string.IsNullOrWhiteSpace(text) && Regex.Replace(text, @"\s+", "").All(char.IsLetter) && text.Length <= 50,
                 "El nombre debe contener solo letras y tener un máximo de 50 caracteres.");
         }
 
@@ -227,7 +228,7 @@ namespace Sistema_SISDON_Proyecto_TPOO.Forms
         private void textBoxDesc_TextChanged_1(object sender, EventArgs e)
         {
             ValidateTextBox(textBoxDesc, lblErrorDescription,
-                text => !string.IsNullOrWhiteSpace(text) && text.All(char.IsLetter) && text.Length <= 200,
+                text => !string.IsNullOrWhiteSpace(text) && Regex.Replace(text, @"\s+", "").Any(char.IsLetter) && text.Length <= 200,
                 "La descripcion debe contener solo letras y tener un máximo de 200 caracteres.");
         }
 

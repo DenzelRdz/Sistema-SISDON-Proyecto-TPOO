@@ -112,7 +112,7 @@
 			// textBoxSearch
 			// 
 			this.textBoxSearch.Location = new System.Drawing.Point(141, 311);
-			this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxSearch.Name = "textBoxSearch";
 			this.textBoxSearch.Size = new System.Drawing.Size(431, 20);
 			this.textBoxSearch.TabIndex = 2;
@@ -121,7 +121,7 @@
 			// btnSearch
 			// 
 			this.btnSearch.Location = new System.Drawing.Point(645, 306);
-			this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(121, 29);
 			this.btnSearch.TabIndex = 3;
@@ -142,8 +142,9 @@
 			// 
 			// textBoxId
 			// 
+			this.textBoxId.Enabled = false;
 			this.textBoxId.Location = new System.Drawing.Point(141, 341);
-			this.textBoxId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.textBoxId.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxId.Name = "textBoxId";
 			this.textBoxId.Size = new System.Drawing.Size(213, 20);
 			this.textBoxId.TabIndex = 5;
@@ -162,7 +163,7 @@
 			// textBoxName
 			// 
 			this.textBoxName.Location = new System.Drawing.Point(141, 370);
-			this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxName.Name = "textBoxName";
 			this.textBoxName.Size = new System.Drawing.Size(213, 20);
 			this.textBoxName.TabIndex = 7;
@@ -182,7 +183,7 @@
 			// textBoxPrice
 			// 
 			this.textBoxPrice.Location = new System.Drawing.Point(141, 399);
-			this.textBoxPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.textBoxPrice.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxPrice.Name = "textBoxPrice";
 			this.textBoxPrice.Size = new System.Drawing.Size(213, 20);
 			this.textBoxPrice.TabIndex = 9;
@@ -202,7 +203,7 @@
 			// textBoxExistence
 			// 
 			this.textBoxExistence.Location = new System.Drawing.Point(141, 428);
-			this.textBoxExistence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.textBoxExistence.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxExistence.Name = "textBoxExistence";
 			this.textBoxExistence.Size = new System.Drawing.Size(213, 20);
 			this.textBoxExistence.TabIndex = 11;
@@ -222,7 +223,7 @@
 			// textBoxDesc
 			// 
 			this.textBoxDesc.Location = new System.Drawing.Point(141, 458);
-			this.textBoxDesc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.textBoxDesc.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxDesc.Name = "textBoxDesc";
 			this.textBoxDesc.Size = new System.Drawing.Size(213, 20);
 			this.textBoxDesc.TabIndex = 13;
@@ -243,7 +244,7 @@
 			// 
 			this.dateTimePicker1.Enabled = false;
 			this.dateTimePicker1.Location = new System.Drawing.Point(141, 487);
-			this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(213, 20);
 			this.dateTimePicker1.TabIndex = 15;
@@ -263,7 +264,7 @@
 			// 
 			this.dateTimePicker2.Enabled = false;
 			this.dateTimePicker2.Location = new System.Drawing.Point(141, 518);
-			this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
 			this.dateTimePicker2.Name = "dateTimePicker2";
 			this.dateTimePicker2.Size = new System.Drawing.Size(213, 20);
 			this.dateTimePicker2.TabIndex = 17;
@@ -354,6 +355,7 @@
 			// 
 			// dataGridView1
 			// 
+			this.dataGridView1.AllowUserToAddRows = false;
 			this.dataGridView1.AutoGenerateColumns = false;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -366,8 +368,10 @@
             this.actualizadoEn});
 			this.dataGridView1.DataSource = this.inventarioBindingSource;
 			this.dataGridView1.Location = new System.Drawing.Point(22, 8);
-			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
 			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowHeadersVisible = false;
 			this.dataGridView1.RowHeadersWidth = 62;
 			this.dataGridView1.RowTemplate.Height = 28;
 			this.dataGridView1.Size = new System.Drawing.Size(743, 276);
@@ -380,6 +384,7 @@
 			this.idProducto.HeaderText = "idProducto";
 			this.idProducto.MinimumWidth = 8;
 			this.idProducto.Name = "idProducto";
+			this.idProducto.ReadOnly = true;
 			this.idProducto.Width = 150;
 			// 
 			// nombreProducto
@@ -388,6 +393,7 @@
 			this.nombreProducto.HeaderText = "nombreProducto";
 			this.nombreProducto.MinimumWidth = 8;
 			this.nombreProducto.Name = "nombreProducto";
+			this.nombreProducto.ReadOnly = true;
 			this.nombreProducto.Width = 150;
 			// 
 			// precioProducto
@@ -396,6 +402,7 @@
 			this.precioProducto.HeaderText = "precioProducto";
 			this.precioProducto.MinimumWidth = 8;
 			this.precioProducto.Name = "precioProducto";
+			this.precioProducto.ReadOnly = true;
 			this.precioProducto.Width = 150;
 			// 
 			// existenciaProducto
@@ -404,6 +411,7 @@
 			this.existenciaProducto.HeaderText = "existenciaProducto";
 			this.existenciaProducto.MinimumWidth = 8;
 			this.existenciaProducto.Name = "existenciaProducto";
+			this.existenciaProducto.ReadOnly = true;
 			this.existenciaProducto.Width = 150;
 			// 
 			// descripcionProducto
@@ -412,6 +420,7 @@
 			this.descripcionProducto.HeaderText = "descripcionProducto";
 			this.descripcionProducto.MinimumWidth = 8;
 			this.descripcionProducto.Name = "descripcionProducto";
+			this.descripcionProducto.ReadOnly = true;
 			this.descripcionProducto.Width = 150;
 			// 
 			// creadoEn
@@ -420,6 +429,7 @@
 			this.creadoEn.HeaderText = "creadoEn";
 			this.creadoEn.MinimumWidth = 8;
 			this.creadoEn.Name = "creadoEn";
+			this.creadoEn.ReadOnly = true;
 			this.creadoEn.Width = 150;
 			// 
 			// actualizadoEn
@@ -428,6 +438,7 @@
 			this.actualizadoEn.HeaderText = "actualizadoEn";
 			this.actualizadoEn.MinimumWidth = 8;
 			this.actualizadoEn.Name = "actualizadoEn";
+			this.actualizadoEn.ReadOnly = true;
 			this.actualizadoEn.Width = 150;
 			// 
 			// Inventario
@@ -461,7 +472,7 @@
 			this.Controls.Add(this.textBoxSearch);
 			this.Controls.Add(this.lblSearch);
 			this.Controls.Add(this.dataGridView1);
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "Inventario";
 			this.Text = "Inventario";
 			this.Load += new System.EventHandler(this.Inventario_Load);
